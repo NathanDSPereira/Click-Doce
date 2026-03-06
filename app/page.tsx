@@ -1,6 +1,5 @@
 import Header from '@/components/Header';
 import ListPizza from '@/components/ListPizza';
-import QuickAcess from '@/components/QuickAcess';
 import ListFeedbacks from '@/components/ListFeedbacks';
 import Map from '@/components/Map';
 import FooterPage from '@/components/FooterPage';
@@ -12,14 +11,14 @@ export default function Home() {
 
   const jsonLd = {
     '@context': 'https://schema.org',
-    '@type': 'PizzaRestaurant',
-    'name': 'La Nostra Pizza',
+    '@type': '',
+    'name': 'Click & Doce',
     'address': {
       '@type': 'PostalAddress',
-      'streetAddress': 'Bairro Estados Unidos, 406',
+      'streetAddress': 'Bairro Estados Unidos, 406',//atualizar com o endereço real
       'addressLocality': 'Uberaba',
       'addressRegion': 'MG',
-      'postalCode': '38025-170',
+      'postalCode': '38025-170',//atualizar com o CEP real
       'addressCountry': 'BR'
     },
     'telephone': '+553499999999', // Atualize com o número real
@@ -39,7 +38,6 @@ export default function Home() {
       />
       
       <Header />
-      <QuickAcess />
       <ListPizza listaPizzas={listaPizzas} />
       <ListFeedbacks listaFeedbacks={listaDeFeedbacks} />
       <Map />

@@ -3,6 +3,15 @@
 :root {
   --background: #ffffff;
   --foreground: #171717;
+
+  --font-titulo: 'Playfair Display', serif;
+  --font-corpo: 'Lato', sans-serif;
+
+  --bg-creme: #f9f3e5;
+  --action-orange: #f2a379;
+  --text-chocolate: #4a2c2a;
+  --border-bege: #e8dcc4;
+  --accent-green: #8c946c;
 }
 
 @layer utilities {
@@ -32,5 +41,4 @@
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
 }

@@ -3,7 +3,7 @@ import Image  from "next/image";
 
 export default function PizzaCard({ pizzaCard}: {pizzaCard: Pizza}) {
     return (
-        <div className="bg-zinc-950/40 border p-3 border-zinc-800 rounded-4xl overflow-hidden">
+        <div className="bg-(--bg-creme) border border-(--border-bege) rounded-2xl shadow-md overflow-hidden">
             <div className="relative w-full h-40 mb-3 overflow-hidden">
                 <Image 
                     src={pizzaCard.imagem} 
@@ -14,8 +14,8 @@ export default function PizzaCard({ pizzaCard}: {pizzaCard: Pizza}) {
                     className="rounded-tr-lg rounded-tl-lg w-full h-full object-cover"
                 />
             </div>
-            <div className="px-1 text-slate-200 space-y-2">
-                <h3 className="font-semibold font-serif text-lg">{pizzaCard.nome}</h3>
+            <div className="px-3 text-(--text-chocolate) font-sans space-y-2">
+                <h3 className="font-semibold text-lg">{pizzaCard.nome}</h3>
                 <p className="text-zinc-300 leading-5 mb-5 text-sm">{pizzaCard.descricao}</p>
                 <div className="flex w-ful justify-between items-end">
                     <div>

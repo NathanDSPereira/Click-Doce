@@ -14,15 +14,15 @@ const geistMono = Geist_Mono({
 
 
 export const metadata: Metadata = {
-  metadataBase: new URL('https://pizzaria-modelo-landing-page.vercel.app/'),
-  title: 'La Nostra Pizza | Pizzaria Artesanal em Uberaba',
-  description: 'A melhor pizza de longa fermentação em Uberaba. Ingredientes selecionados, entrega rápida em 20-30 min e sabor inesquecível. Peça agora!',
-  keywords: ['pizzaria uberaba', 'delivery pizza uberaba', 'pizza artesanal', 'melhor pizza de uberaba'],
+  metadataBase: new URL('https://github.com/NathanDSPereira/Click-Doce'),//atualizar com o link do site
+  title: 'Click & Doce | Doce Caseiro em Uberaba',
+  description: 'Os melhores doces caseiros de Uberaba. Ingredientes selecionados, entrega rápida e sabor inesquecível. Peça agora!',
+  keywords: ['doce caseiro uberaba', 'delivery doce uberaba', 'doces artesanais', 'melhores doces de uberaba'],
   openGraph: {
-    title: 'La Nostra Pizza | Uberaba',
-    description: 'Experiência premium da pizza artesanal direto na sua mesa.',
-    url: 'https://pizzaria-modelo-landing-page.vercel.app/', // Substitua pelo seu link
-    siteName: 'La Nostra Pizza',
+    title: 'Click & Doce | Uberaba',
+    description: 'Os melhores doces caseiros de Uberaba. Ingredientes selecionados, entrega rápida e sabor inesquecível. Peça agora!',
+    url: '', // Substitua pelo seu link
+    siteName: 'Click & Doce',
     images: [
       {
         url: '/og-image.jpg', // Crie uma imagem bonita de 1200x630px para o link

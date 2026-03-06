@@ -3,14 +3,13 @@ import { Pizza } from "@/interface/Pizza";
 
 export default function ListPizza({listaPizzas}: { listaPizzas: Pizza[] }) {
     return (
-        <section className="bg-zinc-950 max-w-7xl mx-auto">
-            <div className="px-4 py-6 flex justify-center">
-                <h2 className="text-slate-200 text-xl font-bold mb-4 font-serif tracking-wide">As mais pedidas</h2>
-            </div>
-
-            <ul className="w-full flex flex-wrap gap-8 justify-center">
+        <section className="bg-(--bg-creme) max-w-7xl mx-auto">
+            <ul className="flex flex-nowrap overflow-x-auto scrollbar-hide snap-x snap-mandatory px-2 scroll-smooth">
                 {listaPizzas.map((pizza) => (
-                    <li key={pizza.id}>
+                    <li 
+                        key={pizza.id}
+                        className="min-w-45 h-80 snap-center m-2"
+                    >
                         <PizzaCard pizzaCard={pizza} />
                     </li>
                 ))}
