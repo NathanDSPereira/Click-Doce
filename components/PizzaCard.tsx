@@ -1,10 +1,11 @@
 import { Pizza } from "@/interface/Pizza";
 import Image  from "next/image";
+import { Star } from "lucide-react";
 
 export default function PizzaCard({ pizzaCard}: {pizzaCard: Pizza}) {
     return (
-        <div className="bg-(--bg-creme) border border-(--border-bege) rounded-2xl shadow-md overflow-hidden">
-            <div className="relative w-full h-40 mb-3 overflow-hidden">
+        <section className="bg-(--bg-creme) w-full h-full border border-(--border-bege) rounded-3xl shadow-xl overflow-hidden">
+            <div className="h-40 mb-3">
                 <Image 
                     src={pizzaCard.imagem} 
                     alt={pizzaCard.nome} 
@@ -14,20 +15,39 @@ export default function PizzaCard({ pizzaCard}: {pizzaCard: Pizza}) {
                     className="rounded-tr-lg rounded-tl-lg w-full h-full object-cover"
                 />
             </div>
+
             <div className="px-3 text-(--text-chocolate) font-sans space-y-2">
-                <h3 className="font-semibold text-lg">{pizzaCard.nome}</h3>
-                <p className="text-zinc-300 leading-5 mb-5 text-sm">{pizzaCard.descricao}</p>
-                <div className="flex w-ful justify-between items-end">
-                    <div>
-                        <p className="text-amber-600 text-xl font-extrabold">R$ {pizzaCard.preco.toFixed(2)}</p>
-                        <p className="text-slate-500 text-sm font-sans">Tamanho: {pizzaCard.tamanho} + {pizzaCard.fatias} fatias</p>
-                    </div>
+                <div className="flex flex-col gap-5">
+                    <div className="flex gap-1 justify-between">
+                        <h3 className="font-medium text-[16px]">Palha Italiana</h3>    
                     
-                    <button className="bg-amber-600 active:scale-95 w-10 h-10 flex items-center justify-center text-zinc-950 rounded-full transition-colors shadow-lg hover:cursor-pointer ">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="23" height="23" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" className="lucide lucide-plus-icon lucide-plus"><path d="M5 12h14"/><path d="M12 5v14"/></svg>
+                        <p className="text-zinc-600 text-sm flex items-center text-center gap-1">
+                            <Star
+                                    size={14} 
+                                    className="text-amber-500 fill-amber-500  inline-block" 
+                                />
+                            
+                            5.0
+                        </p>
+                    </div>
+
+                    <div className="flex flex-col gap-2 mb-2">
+                        <p className="text-(--accent-green) text-sm bg-[#8C946C]/20 inline-flex rounded-full tracking-wider w-fit">[Pronta entrega: 3]</p>
+
+                        <p className="text-(--text-chocolate) leading-5 text-xl font-semibold">R$ 8,00</p>
+                    </div>
+                </div>
+
+                <div className="flex w-full flex-col gap-4 items-end pb-4">
+                    <button className="bg-(--action-orange) active:scale-95 w-full flex items-center justify-center text-zinc-950 rounded-2xl transition-all shadow-md h-10">
+                        Pedir agora
+                    </button>
+
+                    <button className="bg-transparent border border-(--border-bege) active:scale-95 w-full flex items-center justify-center text-zinc-950 rounded-2xl c shadow-md h-10">
+                        Agendar
                     </button>
                 </div>
             </div>
-        </div>
+        </section>
     );
 }

@@ -8,7 +8,7 @@ export default function ListPizza({listaPizzas}: { listaPizzas: Pizza[] }) {
                 {listaPizzas.map((pizza) => (
                     <li 
                         key={pizza.id}
-                        className="min-w-45 h-80 snap-center m-2"
+                        className="min-w-45 min-h-80 snap-center m-2"
                     >
                         <PizzaCard pizzaCard={pizza} />
                     </li>
