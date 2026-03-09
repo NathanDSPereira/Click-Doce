@@ -1,11 +1,9 @@
 import Header from '@/components/Header';
 import ListPizza from '@/components/ListPizza';
-import ListFeedbacks from '@/components/ListFeedbacks';
-import Map from '@/components/Map';
+import ComoPedir from '@/components/ComoPedir';
 import FooterPage from '@/components/FooterPage';
 
 import BdPizzas from '@/bancoDeDados/BdPizzas.json';
-import BdFeedbacks from '@/bancoDeDados/BdFeedbacks.json';
 
 export default function Home() {
 
@@ -27,7 +25,6 @@ export default function Home() {
   };
 
   const listaPizzas = BdPizzas;
-  const listaDeFeedbacks = BdFeedbacks;
 
   return (
     <main className="overflow-x-hidden bg-zinc-950 min-h-screen pb-10">
@@ -39,8 +36,7 @@ export default function Home() {
       
       <Header />
       <ListPizza listaPizzas={listaPizzas} />
-      <ListFeedbacks listaFeedbacks={listaDeFeedbacks} />
-      <Map />
+      <ComoPedir />
       <FooterPage />
     </main>
   );
