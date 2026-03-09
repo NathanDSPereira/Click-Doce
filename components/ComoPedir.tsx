@@ -12,7 +12,7 @@ export default function ComoPedir() {
                 </p>
             </div>
 
-            <ul className="flex flex-col justify-center items-start mx-auto text-slate-200 gap-5 border-t-zinc-700 border-t mt-8 pt-8 md:flex-row md:justify-around px-1">
+            <ul className="flex flex-col justify-center items-start mx-auto text-slate-200 gap-5 border-t-zinc-700 border-t mt-8 pt-8 md:flex-row md:justify-around px-1"> 
                 <li className="flex justify-center items-center gap-2">
                     {/* <Timer 
                         size={30} 
