@@ -1,9 +1,12 @@
+'use client';
 import Header from '@/components/Header';
 import ListPizza from '@/components/ListPizza';
 import ComoPedir from '@/components/ComoPedir';
 import FooterPage from '@/components/FooterPage';
+import MenuLateral from '@/components/MenuLateral';
 
 import BdPizzas from '@/bancoDeDados/BdPizzas.json';
+import { useState } from 'react';
 
 export default function Home() {
 
@@ -26,6 +29,16 @@ export default function Home() {
 
   const listaPizzas = BdPizzas;
 
+  const [abrirMenu, setAbrirMenu] = useState<boolean>(false);
+
+  const abrirMenuLateral = () => {
+    setAbrirMenu(true);
+  }
+
+  const fecharMenuLateral = () => {
+    setAbrirMenu(false);
+  }
+
   return (
     <main className="overflow-x-hidden bg-(--bg-creme) min-h-screen pb-10">
 
@@ -34,7 +47,12 @@ export default function Home() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
       
-      <Header />
+      <Header abrirMenuLateral={abrirMenuLateral} />
+
+      {abrirMenu && (
+        <MenuLateral fecharMenu={fecharMenuLateral} />
+      )}
+      
       <ListPizza listaPizzas={listaPizzas} />
       <ComoPedir />
       <FooterPage />
