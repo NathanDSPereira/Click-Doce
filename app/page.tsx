@@ -27,7 +27,7 @@ export default function Home() {
   const listaPizzas = BdPizzas;
 
   return (
-    <main className="overflow-x-hidden bg-zinc-950 min-h-screen pb-10">
+    <main className="overflow-x-hidden bg-(--bg-creme) min-h-screen pb-10">
 
       <script
         type="application/ld+json"
