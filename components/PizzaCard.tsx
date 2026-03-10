@@ -4,7 +4,7 @@ import { Star } from "lucide-react";
 
 export default function PizzaCard({ pizzaCard}: {pizzaCard: Pizza}) {
     return (
-        <section className="bg-(--bg-creme) w-full h-full border border-(--border-bege) rounded-3xl shadow-xl overflow-hidden">
+        <section className="bg-(--bg-creme) w-full h-full border border-(--border-bege) rounded-3xl overflow-hidden">
             <div className="h-40 mb-3">
                 <Image 
                     src={pizzaCard.imagem} 
