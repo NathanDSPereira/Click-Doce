@@ -39,11 +39,15 @@ export default function PizzaCard({ pizzaCard}: {pizzaCard: Pizza}) {
                 </div>
 
                 <div className="flex w-full flex-col gap-4 items-end pb-4">
-                    <button className="bg-(--action-orange) active:scale-95 w-full flex items-center justify-center text-zinc-950 rounded-2xl transition-all shadow-md h-10">
+                    <button 
+                        // onClick={}
+                        className="bg-(--action-orange) active:scale-95 w-full flex items-center justify-center text-zinc-950 rounded-2xl transition-all shadow-md h-10">
                         Pedir agora
                     </button>
 
-                    <button className="bg-transparent border border-(--border-bege) active:scale-95 w-full flex items-center justify-center text-zinc-950 rounded-2xl c shadow-md h-10">
+                    <button 
+
+                        className="bg-transparent border border-(--border-bege) active:scale-95 w-full flex items-center justify-center text-zinc-950 rounded-2xl c shadow-md h-10">
                         Agendar
                     </button>
                 </div>

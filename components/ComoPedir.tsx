@@ -8,7 +8,7 @@ export default function ComoPedir() {
                     Click & Doce
                 </h4>
                 <p className="text-center text-(--text-chocolate) font-medium text-sm mt-2">
-                    A verdadeira experiência da pizza artesanal, com ingredientes selecionados e massa de longa fermentação.
+                    Reviva suas melhores lembranças com os doces que mais ama feitos com carinho e cuidado especialmente para você!
                 </p>
             </div>
 

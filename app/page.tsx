@@ -30,6 +30,7 @@ export default function Home() {
   const listaPizzas = BdPizzas;
 
   const [abrirMenu, setAbrirMenu] = useState<boolean>(false);
+  
 
   const abrirMenuLateral = () => {
     setAbrirMenu(true);
@@ -38,6 +39,8 @@ export default function Home() {
   const fecharMenuLateral = () => {
     setAbrirMenu(false);
   }
+
+
 
   return (
     <main className="overflow-x-hidden bg-(--bg-creme) min-h-screen pb-10">
