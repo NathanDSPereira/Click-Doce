@@ -32,7 +32,7 @@ export default function PizzaCard({ pizzaCard}: {pizzaCard: Pizza}) {
                     </div>
 
                     <div className="flex flex-col gap-2 mb-2">
-                        <p className="text-(--accent-green) text-sm bg-[#8C946C]/20 inline-flex rounded-full tracking-wider w-fit">[Pronta entrega: 3]</p>
+                        <p className="text-(--accent-green) text-sm bg-[#8C946C]/10 inline-flex rounded-sm tracking-wider w-fit">Pronta entrega: 3</p>
 
                         <p className="text-(--text-chocolate) leading-5 text-xl font-semibold">R$ 8,00</p>
                     </div>

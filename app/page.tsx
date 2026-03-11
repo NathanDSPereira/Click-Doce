@@ -50,7 +50,10 @@ export default function Home() {
       <Header abrirMenuLateral={abrirMenuLateral} />
 
       {abrirMenu && (
-        <MenuLateral fecharMenu={fecharMenuLateral} />
+        <MenuLateral 
+          fecharMenu={fecharMenuLateral} 
+          // menuLateral={abrirMenu} 
+        />
       )}
       
       <ListPizza listaPizzas={listaPizzas} />
