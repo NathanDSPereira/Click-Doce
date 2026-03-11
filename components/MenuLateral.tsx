@@ -5,9 +5,8 @@ export default function MenuLateral({fecharMenu} : {fecharMenu: () => void}) {
 
     return(
 
-        <section className="fixed top-0 left-0 w-full h-full bg-(--text-chocolate)/80 shadow-lg z-300 backdrop-blur-sm inset-0 animate-in transition-all duration-300">
+        <section className="fixed top-0 left-0 w-full h-screen bg-(--text-chocolate)/80 shadow-lg z-300 backdrop-blur-sm inset-0 animate-in transition-all duration-300">
             <aside className='w-11/12 h-full bg-(--bg-creme) z-70 shadow-2xl rounded-r-[2.5rem]'>
-
                 <div className="p-9 pb-10">
                     <div className="flex justify-between items-start">
                         <div className="space-y-4">
