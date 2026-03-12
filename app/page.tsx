@@ -4,8 +4,12 @@ import ListPizza from '@/components/ListPizza';
 import ComoPedir from '@/components/ComoPedir';
 import FooterPage from '@/components/FooterPage';
 import MenuLateral from '@/components/MenuLateral';
+import ModalAgendamento from '@/components/ModalAgendamento';
+
+import { Produtos } from '@/interface/Produtos';
 
 import BdPizzas from '@/bancoDeDados/BdPizzas.json';
+
 import { useState } from 'react';
 
 export default function Home() {
@@ -30,8 +34,19 @@ export default function Home() {
   const listaPizzas = BdPizzas;
 
   const [abrirMenu, setAbrirMenu] = useState<boolean>(false);
-  
+  const [produtoAgendamento, setProdutoAgendamento] = useState<Produtos>({
+    id: 0,
+    nome: '',
+    preco: 0,
+    estoque: 0,
+    permitirAgendamento: false,
+    imagem_url: ''
+  });
 
+  const agendarPedido = (produto: Produtos) => {
+    setProdutoAgendamento(produto);
+  }
+  
   const abrirMenuLateral = () => {
     setAbrirMenu(true);
   }
@@ -50,16 +65,27 @@ export default function Home() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
       
-      <Header abrirMenuLateral={abrirMenuLateral} />
+      <Header 
+        abrirMenuLateral={abrirMenuLateral} 
+      />
 
       {abrirMenu && (
         <MenuLateral 
-          fecharMenu={fecharMenuLateral} 
-          // menuLateral={abrirMenu} 
+          fecharMenu={fecharMenuLateral}
+        />
+      )}
+
+      {produtoAgendamento && (
+        <ModalAgendamento 
+          produtoAAgendar={produtoAgendamento}
         />
       )}
       
-      <ListPizza listaPizzas={listaPizzas} />
+      <ListPizza 
+        listaPizzas={listaPizzas}
+        agendarPedido={agendarPedido}
+
+      />
       <ComoPedir />
       <FooterPage />
     </main>

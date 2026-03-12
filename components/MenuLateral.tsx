@@ -53,7 +53,7 @@ export default function MenuLateral({fecharMenu} : {fecharMenu: () => void}) {
                     </a>
                 </nav>
 
-                <div className="p-8 mt-auto border-t border-(--text-chocolate)/10">
+                <div className="p-8 border-t border-(--text-chocolate)/10">
                     <div className="flex items-center justify-between mb-6">
                         <a href="#" className="flex items-center gap-2 text-[#4A2C2A] transition-colors">
                             <Instagram size={20} />

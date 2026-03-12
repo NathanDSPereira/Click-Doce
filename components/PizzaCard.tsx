@@ -1,13 +1,13 @@
-import { Pizza } from "@/interface/Pizza";
 import Image  from "next/image";
 import { Star } from "lucide-react";
+import { Produtos } from "@/interface/Produtos";
 
-export default function PizzaCard({ pizzaCard}: {pizzaCard: Pizza}) {
+export default function PizzaCard({ pizzaCard, agendarPedido}: {pizzaCard: Produtos, agendarPedido: (produto: Produtos) => void}) {
     return (
         <section className="bg-(--bg-creme) w-full h-full border border-(--border-bege) rounded-3xl overflow-hidden">
             <div className="h-40 mb-3">
                 <Image 
-                    src={pizzaCard.imagem} 
+                    src={pizzaCard.imagem_url} 
                     alt={pizzaCard.nome} 
                     width={200} 
                     height={200}
@@ -46,7 +46,7 @@ export default function PizzaCard({ pizzaCard}: {pizzaCard: Pizza}) {
                     </button>
 
                     <button 
-
+                        onClick={() => agendarPedido(pizzaCard)}
                         className="bg-transparent border border-(--border-bege) active:scale-95 w-full flex items-center justify-center text-zinc-950 rounded-2xl c shadow-md h-10">
                         Agendar
                     </button>
