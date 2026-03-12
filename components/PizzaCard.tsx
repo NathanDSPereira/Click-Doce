@@ -47,7 +47,7 @@ export default function PizzaCard({ pizzaCard, agendarPedido}: {pizzaCard: Produ
 
                     <button 
                         onClick={() => agendarPedido(pizzaCard)}
-                        className="bg-transparent border border-(--border-bege) active:scale-95 w-full flex items-center justify-center text-zinc-950 rounded-2xl c shadow-md h-10">
+                        className="bg-transparent border border-(--border-bege) active:scale-95 w-full flex items-center justify-center text-zinc-950 rounded-2xl c shadow-md h-10 transition-all">
                         Agendar
                     </button>
                 </div>

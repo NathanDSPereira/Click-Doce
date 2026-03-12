@@ -5,7 +5,7 @@
     "preco": 8.00,
     "estoque": 12,
     "permitirAgendamento": true,
-    "imagem_url": "/doces/palha-tradicional.jpg"
+    "imagem_url": "/images/pizza-tela-inicial.webp"
   },
   {
     "id": 20,
@@ -13,7 +13,7 @@
     "preco": 12.00,
     "estoque": 0,
     "permitirAgendamento": true,
-    "imagem_url": "/doces/banoffee.jpg"
+    "imagem_url": "/images/pizza-tela-inicial.webp"
     },
   {
     "id": 30,
@@ -21,6 +21,6 @@
     "preco": 9.00,
     "estoque": 5,
     "permitirAgendamento": false,
-    "imagem_url": "/doces/mousse.jpg"
+    "imagem_url": "/images/pizza-tela-inicial.webp"
   }
 ]

@@ -8,7 +8,7 @@ import ModalAgendamento from '@/components/ModalAgendamento';
 
 import { Produtos } from '@/interface/Produtos';
 
-import BdPizzas from '@/bancoDeDados/BdPizzas.json';
+import BdDoces from '@/bancoDeDados/BdDoces.json';
 
 import { useState } from 'react';
 
@@ -31,20 +31,17 @@ export default function Home() {
     'priceRange': '$$'
   };
 
-  const listaPizzas = BdPizzas;
+  const listaPizzas = BdDoces;
 
   const [abrirMenu, setAbrirMenu] = useState<boolean>(false);
-  const [produtoAgendamento, setProdutoAgendamento] = useState<Produtos>({
-    id: 0,
-    nome: '',
-    preco: 0,
-    estoque: 0,
-    permitirAgendamento: false,
-    imagem_url: ''
-  });
+  const [produtoAgendamento, setProdutoAgendamento] = useState<Produtos | null>(null);
 
   const agendarPedido = (produto: Produtos) => {
     setProdutoAgendamento(produto);
+  }
+
+  const fecharModalAgendamento = () => {
+    setProdutoAgendamento(null)
   }
   
   const abrirMenuLateral = () => {
@@ -78,6 +75,7 @@ export default function Home() {
       {produtoAgendamento && (
         <ModalAgendamento 
           produtoAAgendar={produtoAgendamento}
+          fecharModal={fecharModalAgendamento}
         />
       )}
       
