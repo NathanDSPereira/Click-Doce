@@ -1,36 +1,47 @@
 import { Produtos } from "@/interface/Produtos";
 import { ShoppingBag, Plus, Minus, X } from "lucide-react";
 import Image from "next/image";
+import { useEffect } from "react";
 
 export default function ModalAgendamento({produtoAAgendar, fecharModal} : {produtoAAgendar: Produtos | null, fecharModal: () => void}) {
+
+    useEffect(() => {
+            if (produtoAAgendar) {
+                document.body.style.overflow = 'hidden'; // Trava o fundo
+            } else {
+                document.body.style.overflow = 'unset';
+            }
+            return () => { document.body.style.overflow = 'unset'; };
+    }, [produtoAAgendar]);
+    
     
     if(!produtoAAgendar) return
 
     const produto = produtoAAgendar;
     
     return (
-        <section className="fixed w-screen h-screen inset-0 flex items-center justify-center bg-(--text-chocolate)/80 backdrop-blur-sm z-100">
-            <div className="w-4/5 h-11/12 bg-(--bg-creme) rounded-2xl relative">
+        <section className="fixed w-screen h-screen inset-0 flex items-center justify-center bg-(--text-chocolate)/80 backdrop-blur-sm z-100 overflow-y-auto">
+            <div className="w-4/5 h-auto bg-(--bg-creme) rounded-2xl relative my-auto">
                 <button onClick={fecharModal} className="text-xl font-bold uppercase absolute top-2 left-2 ">
                     <X size={40} className="text-red-600" />
                 </button>
 
-                <div className="w-full h-full flex flex-col justify-between">
+                <div className="w-full h-full flex flex-col">
                     <div className="flex flex-col h-2/5 gap-3">
                         <Image
                             src={produto.imagem_url}
                             alt={produto.nome}
-                            className="h-full w-auto rounded-t-2xl"
+                            className="h-full w-auto object-cover rounded-t-2xl"
                             width={150}
                             height={150}
                         />
 
-                        <div className="flex justify-center items-center px-5">
+                        <div className="flex justify-center items-center px-5 text-center">
                             <h4 className="font-sans text-(--text-chocolate) font-bold text-2xl">{produto.nome}</h4>
                         </div>
                     </div>
 
-                    <form className="flex flex-col gap-1 w-full px-5">
+                    <form className="flex flex-col gap-1 justify-center w-full px-5 h-full">
                         <div className="flex flex-col">
                             <label htmlFor="">Quantidade</label>
                             <div className="flex gap-3 justify-around items-center">

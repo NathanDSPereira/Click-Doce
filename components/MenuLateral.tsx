@@ -1,7 +1,17 @@
-import { BookOpen, Instagram, MapPin, MessageCircle, ShoppingBag, X } from 'lucide-react';
+import { BookOpen, MessageCircle, ShoppingBag, X } from 'lucide-react';
+import { useEffect } from 'react';
 import Image from 'next/image';
 
-export default function MenuLateral({fecharMenu} : {fecharMenu: () => void}) {
+export default function MenuLateral({fecharMenu, menuAberto} : {fecharMenu: () => void, menuAberto: boolean}) {
+
+    useEffect(() => {
+        if (menuAberto) {
+            document.body.style.overflow = 'hidden'; // Trava o fundo
+        } else {
+            document.body.style.overflow = 'unset';
+        }
+        return () => { document.body.style.overflow = 'unset'; };
+    }, [menuAberto]);
 
     return(
         <section className="fixed top-0 left-0 w-full h-screen bg-(--text-chocolate)/80 shadow-lg z-300 backdrop-blur-sm inset-0 animate-in transition-all duration-300">
@@ -52,19 +62,6 @@ export default function MenuLateral({fecharMenu} : {fecharMenu: () => void}) {
                         <span className="font-semibold text-[18px]">WhatsApp</span>
                     </a>
                 </nav>
-
-                <div className="p-8 border-t border-(--text-chocolate)/10">
-                    <div className="flex items-center justify-between mb-6">
-                        <a href="#" className="flex items-center gap-2 text-[#4A2C2A] transition-colors">
-                            <Instagram size={20} />
-                            <span className="text-xl font-bold">@clickdoce</span>
-                        </a>
-                    </div>
-                    <div className="flex items-center gap-2 text-[#4A2C2A]/50">
-                        <MapPin size={14} />
-                        <span className="text-[10px] font-bold uppercase tracking-widest">Uberaba, MG</span>
-                    </div>
-                </div>
             </aside>
         </section>
     )

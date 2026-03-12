@@ -67,7 +67,8 @@ export default function Home() {
       />
 
       {abrirMenu && (
-        <MenuLateral 
+        <MenuLateral
+          menuAberto={abrirMenu}
           fecharMenu={fecharMenuLateral}
         />
       )}
