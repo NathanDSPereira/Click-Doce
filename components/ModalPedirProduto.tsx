@@ -1,5 +1,5 @@
 import { Produtos } from "@/interface/Produtos";
-import { ShoppingBag, Plus, Minus, X } from "lucide-react";
+import { X } from "lucide-react";
 import Image from "next/image";
 import { useEffect } from "react";
 
@@ -20,46 +20,58 @@ export default function ModalAgendamento({produtoAAgendar, fecharModal} : {produ
     const produto = produtoAAgendar;
     
     return (
-        <section className="fixed w-screen h-screen inset-0 flex items-center justify-center bg-(--text-chocolate)/80 backdrop-blur-sm z-100 overflow-y-auto">
-            <div className="w-4/5 h-auto bg-(--bg-creme) rounded-2xl relative my-auto">
-                <button onClick={fecharModal} className="text-xl font-bold uppercase absolute top-2 left-2 ">
-                    <X size={40} className="text-red-600" />
+        <section className="fixed w-screen h-screen inset-0 flex items-center justify-center bg-(--bg-creme)/80 backdrop-blur-sm z-100 overflow-y-auto overflow-x-hidden">
+            <div className="bg-(--bg-creme) rounded-2xl relative my-auto">
+                <button onClick={fecharModal} className="text-xl rounded-full bg-(--bg-creme) w-13 h-13 flex justify-center items-center font-bold uppercase absolute top-3 right-5">
+                    <X size={37} className="text-(--text-chocolate)" />
                 </button>
 
-                <div className="w-full h-full flex flex-col">
-                    <div className="flex flex-col h-2/5 gap-3">
+                <div className="flex flex-col gap-10 pb-10">
+                    <div className="flex flex-col items-center gap-3 h-auto">
                         <Image
                             src={produto.imagem_url}
                             alt={produto.nome}
-                            className="h-full w-auto object-cover rounded-t-2xl"
+                            className="rounded-full w-full object-cover rounded-t-2xl rounded-b-2xl"
                             width={150}
                             height={150}
                         />
 
-                        <div className="flex justify-center items-center px-5 text-center">
+                        <div className="flex justify-center items-center px-5 py-5 pb-5 text-center border-b border-(--text-chocolate)">
                             <h4 className="font-sans text-(--text-chocolate) font-bold text-2xl">{produto.nome}</h4>
                         </div>
                     </div>
 
-                    <form className="flex flex-col gap-1 justify-center w-full px-5 h-full">
-                        <div className="flex flex-col">
-                            <label htmlFor="">Quantidade</label>
-                            <div className="flex gap-3 justify-around items-center">
-                                <button className="border border-(--text-chocolate) rounded-sm">-</button>
+                    <form className="flex flex-col gap-16 justify-center items-center w-full px-5 font-sans">
+                        <div className="flex flex-col w-full gap-5">
+                            <label htmlFor="" className="text-(--text-chocolate) text-xl font-semibold">Quantidade</label>
+                            <div className="flex gap-3 justify-around items-center text-2xl w-full">
+                                <button className="border border-(--text-chocolate) w-20 h-12 rounded-md text-bold text-3xl flex justify-center items-center shadow-2xl">-</button>
+
                                 <p>quantidade</p>
-                                <button className="border border-(--text-chocolate) rounded-sm">+</button>
+                                
+                                <button className="border border-(--bg-creme) text-(--bg-creme) bg-(--accent-green-dark) w-20 h-12 rounded-md text-bold text-3xl flex justify-center items-center shadow-2xl">+</button>
                             </div>
                         </div>
-                        <div className="flex flex-col gap-3">
-                            <label htmlFor="">Data para entrega</label>
-                            <input className="border border-(--text-chocolate) rounded-sm" type="date" />
+                        <div className="flex flex-col gap-5 w-full">
+                            <label htmlFor="" className="text-(--text-chocolate) text-xl font-semibold">Data para entrega</label>
+                            <div className="flex justify-center">
+                                <input className="border border-(--text-chocolate) h-12 w-3/5 rounded-md shadow-2xl" type="date" />
+                            </div>
                         </div>
-                        <div>
-                            <label htmlFor=""></label>
-                            <textarea name="" id="" className="border border-(--text-chocolate) rounded-sm"></textarea>
+                        <div className="flex flex-col gap-5 w-full">
+                            <label htmlFor="" className="text-(--text-chocolate) text-xl font-semibold">Obervação</label>
+                            <textarea 
+                                name="" 
+                                id="" 
+                                className="border border-(--text-chocolate) rounded-sm placeholder:pt-2 pl-2"
+                                placeholder="Onde você gostaria de receber?"
+                            >
+                            </textarea>
                         </div>
 
-                        <button>Adicionar a sacola</button>
+                        <button className="w-60 h-20 bg-(--text-chocolate) font-bold text-(--bg-creme) rounded-xl shadow-2xl text-xl">
+                            Adicionar a sacola
+                        </button>
                     </form>
                 </div>
             </div>

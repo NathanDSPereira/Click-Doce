@@ -1,10 +1,10 @@
 'use client';
 import Header from '@/components/Header';
-import ListPizza from '@/components/ListPizza';
+import ListPizza from '@/components/ListProduto';
 import ComoPedir from '@/components/ComoPedir';
 import FooterPage from '@/components/FooterPage';
 import MenuLateral from '@/components/MenuLateral';
-import ModalAgendamento from '@/components/ModalAgendamento';
+import ModalPedirProduto from '@/components/ModalPedirProduto';
 
 import { Produtos } from '@/interface/Produtos';
 
@@ -31,17 +31,17 @@ export default function Home() {
     'priceRange': '$$'
   };
 
-  const listaPizzas = BdDoces;
+  const DocesLista: Produtos[] = BdDoces;
 
   const [abrirMenu, setAbrirMenu] = useState<boolean>(false);
-  const [produtoAgendamento, setProdutoAgendamento] = useState<Produtos | null>(null);
+  const [produtoPedirAgora, setProdutoPedirAgora] = useState<Produtos | null>(null);
 
-  const agendarPedido = (produto: Produtos) => {
-    setProdutoAgendamento(produto);
+  const pedirProduto = (produto: Produtos) => {
+    setProdutoPedirAgora(produto);
   }
 
-  const fecharModalAgendamento = () => {
-    setProdutoAgendamento(null)
+  const fecharModalPedirProduto = () => {
+    setProdutoPedirAgora(null)
   }
   
   const abrirMenuLateral = () => {
@@ -73,16 +73,16 @@ export default function Home() {
         />
       )}
 
-      {produtoAgendamento && (
-        <ModalAgendamento 
-          produtoAAgendar={produtoAgendamento}
-          fecharModal={fecharModalAgendamento}
+      {produtoPedirAgora && (
+        <ModalPedirProduto 
+          produtoAAgendar={produtoPedirAgora}
+          fecharModal={fecharModalPedirProduto}
         />
       )}
       
       <ListPizza 
-        listaPizzas={listaPizzas}
-        agendarPedido={agendarPedido}
+        DocesLista={DocesLista}
+        pedirProduto={pedirProduto}
 
       />
       <ComoPedir />
