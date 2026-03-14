@@ -1,5 +1,8 @@
 import Image  from "next/image";
 import { Star } from "lucide-react";
+
+import { formatarMoeda } from "@/Utils/FormatarMoeda";
+
 import { Produtos } from "@/interface/Produtos";
 
 export default function PizzaCard({ produtoCard, pedirProduto}: {produtoCard: Produtos, pedirProduto: (produto: Produtos) => void}) {
@@ -19,7 +22,7 @@ export default function PizzaCard({ produtoCard, pedirProduto}: {produtoCard: Pr
             <div className="px-3 text-(--text-chocolate) font-sans space-y-2">
                 <div className="flex flex-col gap-5">
                     <div className="flex gap-1 justify-between">
-                        <h3 className="font-medium text-[16px]">Palha Italiana</h3>    
+                        <h3 className="font-medium text-[16px]">{produtoCard.nome}</h3>    
                     
                         <p className="text-zinc-600 text-sm flex items-center text-center gap-1">
                             <Star
@@ -32,9 +35,9 @@ export default function PizzaCard({ produtoCard, pedirProduto}: {produtoCard: Pr
                     </div>
 
                     <div className="flex flex-col gap-2 mb-2">
-                        <p className="text-(--accent-green) text-sm bg-[#8C946C]/10 inline-flex rounded-sm tracking-wider w-fit">Pronta entrega: 3</p>
+                        <p className="text-(--accent-green) text-sm bg-[#8C946C]/10 inline-flex rounded-sm tracking-wider w-fit">Pronta entrega: {produtoCard.estoque}</p>
 
-                        <p className="text-(--text-chocolate) leading-5 text-xl font-semibold">R$ 8,00</p>
+                        <p className="text-(--text-chocolate) leading-5 text-xl font-semibold">{formatarMoeda(produtoCard.preco)}</p>
                     </div>
                 </div>
 

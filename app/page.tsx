@@ -1,6 +1,6 @@
 'use client';
 import Header from '@/components/Header';
-import ListPizza from '@/components/ListProduto';
+import ListProduto from '@/components/ListProduto';
 import ComoPedir from '@/components/ComoPedir';
 import FooterPage from '@/components/FooterPage';
 import MenuLateral from '@/components/MenuLateral';
@@ -52,8 +52,6 @@ export default function Home() {
     setAbrirMenu(false);
   }
 
-
-
   return (
     <main className="overflow-x-hidden bg-(--bg-creme) min-h-screen pb-10">
 
@@ -80,10 +78,9 @@ export default function Home() {
         />
       )}
       
-      <ListPizza 
+      <ListProduto 
         DocesLista={DocesLista}
         pedirProduto={pedirProduto}
-
       />
       <ComoPedir />
       <FooterPage />

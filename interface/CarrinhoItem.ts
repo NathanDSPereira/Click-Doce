@@ -1,6 +1,10 @@
 export interface CarrinhoItem {
+    id: number;
+    nome: string;
+    imagem: string;
+    preco: number;
     quantidade: number;
+    dataEntrega: string;
     observacao?: string;
-    dataEntrega?: string;
-    tipo: 'agora' | 'agendamento'
+    tipo: 'pedir' | 'encomenda'
 }
