@@ -5,12 +5,15 @@ import ComoPedir from '@/components/ComoPedir';
 import FooterPage from '@/components/FooterPage';
 import MenuLateral from '@/components/MenuLateral';
 import ModalPedirProduto from '@/components/ModalPedirProduto';
+import BarraFlutuante from '@/components/BarraFlutuante';
+
 
 import { Produtos } from '@/interface/Produtos';
 
 import BdDoces from '@/bancoDeDados/BdDoces.json';
 
 import { useState } from 'react';
+import CarrinhoList from '@/components/CarrinhoList';
 
 export default function Home() {
 
@@ -35,8 +38,9 @@ export default function Home() {
 
   const [abrirMenu, setAbrirMenu] = useState<boolean>(false);
   const [produtoPedirAgora, setProdutoPedirAgora] = useState<Produtos | null>(null);
+  const [abrirCarrinho, seAbrirCarrinho] = useState<boolean>(false);
 
-  const pedirProduto = (produto: Produtos) => {
+  const abrirModalPedirProduto = (produto: Produtos) => {
     setProdutoPedirAgora(produto);
   }
 
@@ -50,6 +54,14 @@ export default function Home() {
 
   const fecharMenuLateral = () => {
     setAbrirMenu(false);
+  }
+
+  const abrirModalCarrinho = () => {
+    seAbrirCarrinho(true)
+  }
+
+  const fecharModalCarrinho = () => {
+    seAbrirCarrinho(false)
   }
 
   return (
@@ -80,10 +92,21 @@ export default function Home() {
       
       <ListProduto 
         DocesLista={DocesLista}
-        pedirProduto={pedirProduto}
+        pedirProduto={abrirModalPedirProduto}
       />
+
+      {abrirCarrinho && (
+        <CarrinhoList
+          fecharCarrinho={fecharModalCarrinho}
+        />
+      )}
+      
       <ComoPedir />
       <FooterPage />
+
+      <BarraFlutuante 
+        abrirCarrinho={abrirModalCarrinho}
+      />
     </main>
   );
 }
