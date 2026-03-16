@@ -29,15 +29,20 @@ Linguagem: TypeScript
 ✨ Funcionalidades em Implementação
 <br>
 Cardápio Digital: Listagem de doces com fotos, preços e descrições.
-
+<br>
+<br>
 Carrinho de Compras: Adição e remoção de itens com persistência de estado via Zustand.
-
+<br>
+<br>
 Agendamento Inteligente: Escolha de data e horário conforme a disponibilidade de produção.
-
+<br>
+<br>
 Resumo via WhatsApp: Integração para enviar o pedido finalizado direto para o vendedor.
-
+<br>
+<br>
 Interface Responsiva: Otimizado para pedidos via celular (foco no público de redes sociais).
 <br>
 <br>
 🏗️ Por que Zustand?
+<br>
 Para este projeto, optei pelo Zustand devido à sua simplicidade e performance. Ele gerencia o estado do carrinho e as preferências de agendamento de forma global, garantindo que o usuário não perca suas escolhas ao navegar entre as páginas de produtos.
