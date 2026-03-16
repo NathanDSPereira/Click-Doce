@@ -14,14 +14,19 @@ O Click Doce é uma plataforma self-service para encomenda de doces caseiros. O 
 🚀 O Projeto
 <br>
 Desenvolvido para facilitar a escolha de produtos e o agendamento de entregas, o sistema remove a necessidade de trocas infinitas de mensagens para pedidos simples, centralizando tudo em uma interface intuitiva.
-
+<br>
+<br>
 Tecnologias Utilizadas:
+<br>
 Framework: Next.js (App Router)
-
+<br>
+<br>
 Gerenciamento de Estado: Zustand (Lógica de carrinho e agendamento)
-
+<br>
+<br>
 Estilização: Tailwind CSS
-
+<br>
+<br>
 Linguagem: TypeScript
 
 <br>
@@ -41,6 +46,7 @@ Resumo via WhatsApp: Integração para enviar o pedido finalizado direto para o 
 <br>
 <br>
 Interface Responsiva: Otimizado para pedidos via celular (foco no público de redes sociais).
+<br>
 <br>
 <br>
 🏗️ Por que Zustand?
