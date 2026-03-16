@@ -1,36 +1,42 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+🧁 Click Doce - Pedidos & Agendamentos
+<br>
+<br>
+O Click Doce é uma plataforma self-service para encomenda de doces caseiros. O objetivo é automatizar o processo de vendas e agendamentos, proporcionando uma experiência rápida e doce para o cliente, enquanto organiza a produção para o confeiteiro.
 
-## Getting Started
+<br>
+<br>
+<br>
+⚠️ Status do Projeto: Em Desenvolvimento 🛠️
 
-First, run the development server:
+🔗 Link de Demonstração: [https://click-doce.vercel.app/]
+<br>
+<br>
+<br>
+🚀 O Projeto
+<br>
+Desenvolvido para facilitar a escolha de produtos e o agendamento de entregas, o sistema remove a necessidade de trocas infinitas de mensagens para pedidos simples, centralizando tudo em uma interface intuitiva.
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+Tecnologias Utilizadas:
+Framework: Next.js (App Router)
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Gerenciamento de Estado: Zustand (Lógica de carrinho e agendamento)
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+Estilização: Tailwind CSS
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+Linguagem: TypeScript
 
-## Learn More
+<br>
+<br>
+✨ Funcionalidades em Implementação
+Cardápio Digital: Listagem de doces com fotos, preços e descrições.
 
-To learn more about Next.js, take a look at the following resources:
+Carrinho de Compras: Adição e remoção de itens com persistência de estado via Zustand.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+Agendamento Inteligente: Escolha de data e horário conforme a disponibilidade de produção.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+Resumo via WhatsApp: Integração para enviar o pedido finalizado direto para o vendedor.
 
-## Deploy on Vercel
+Interface Responsiva: Otimizado para pedidos via celular (foco no público de redes sociais).
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+🏗️ Por que Zustand?
+Para este projeto, optei pelo Zustand devido à sua simplicidade e performance. Ele gerencia o estado do carrinho e as preferências de agendamento de forma global, garantindo que o usuário não perca suas escolhas ao navegar entre as páginas de produtos.
