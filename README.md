@@ -5,9 +5,8 @@ O Click Doce é uma plataforma self-service para encomenda de doces caseiros. O 
 
 <br>
 <br>
-<br>
 ⚠️ Status do Projeto: Em Desenvolvimento 🛠️
-
+<br>
 🔗 Link de Demonstração: [https://click-doce.vercel.app/]
 <br>
 <br>
@@ -28,6 +27,7 @@ Linguagem: TypeScript
 <br>
 <br>
 ✨ Funcionalidades em Implementação
+<br>
 Cardápio Digital: Listagem de doces com fotos, preços e descrições.
 
 Carrinho de Compras: Adição e remoção de itens com persistência de estado via Zustand.
@@ -37,6 +37,7 @@ Agendamento Inteligente: Escolha de data e horário conforme a disponibilidade d
 Resumo via WhatsApp: Integração para enviar o pedido finalizado direto para o vendedor.
 
 Interface Responsiva: Otimizado para pedidos via celular (foco no público de redes sociais).
-
+<br>
+<br>
 🏗️ Por que Zustand?
 Para este projeto, optei pelo Zustand devido à sua simplicidade e performance. Ele gerencia o estado do carrinho e as preferências de agendamento de forma global, garantindo que o usuário não perca suas escolhas ao navegar entre as páginas de produtos.
