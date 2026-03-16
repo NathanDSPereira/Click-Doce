@@ -31,6 +31,7 @@ Linguagem: TypeScript
 
 <br>
 <br>
+<br>
 ✨ Funcionalidades em Implementação
 <br>
 Cardápio Digital: Listagem de doces com fotos, preços e descrições.
