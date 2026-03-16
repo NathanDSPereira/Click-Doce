@@ -97,6 +97,7 @@ export default function Home() {
 
       {abrirCarrinho && (
         <CarrinhoList
+          abrirCarrinho={abrirCarrinho}
           fecharCarrinho={fecharModalCarrinho}
         />
       )}

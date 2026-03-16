@@ -62,7 +62,7 @@ export default function ModalAgendamento({produtoAAgendar, fecharModal} : {produ
                         <Image
                             src={produto.imagem_url}
                             alt={produto.nome}
-                            className="rounded-full w-full object-cover rounded-t-2xl rounded-b-2xl"
+                            className=" w-full object-cover rounded-t-2xl rounded-b-xl"
                             width={150}
                             height={150}
                         />
