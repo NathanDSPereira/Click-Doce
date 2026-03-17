@@ -15,7 +15,7 @@ export default function MenuLateral({fecharMenu, menuAberto} : {fecharMenu: () =
 
     return(
         <section className="fixed top-0 left-0 w-full h-screen bg-(--text-chocolate)/80 shadow-lg z-300 backdrop-blur-sm inset-0 animate-in transition-all duration-300">
-            <aside className='sm:w-2/3 md:w-1/2 w-11/12 h-full bg-(--bg-creme) z-70 shadow-2xl rounded-r-[2.5rem] flex flex-col justify-around'>
+            <aside className='sm:w-2/3 md:w-1/2 w-10/12 h-full bg-(--bg-creme) z-70 shadow-2xl rounded-r-[2.5rem] flex flex-col justify-around'>
                 <div className="p-9 pb-10 border-b border-(--text-chocolate)/10">
                     <div className="flex justify-between items-start">
                         <div className="space-y-4">
@@ -46,7 +46,7 @@ export default function MenuLateral({fecharMenu, menuAberto} : {fecharMenu: () =
                     </div>
                 </div>
 
-                <nav className="flex-1 px-4 space-y-3 mt-6 mb-6">
+                <nav className="flex-1 px-3 space-y-3 mt-6 mb-6">
                     <a href="#" className="flex items-center gap-4 px-6 py-4 text-(--text-chocolate) rounded-2xl active:border-(--accent-green) transition-all group">
                         <BookOpen size={22} />
                         <span className="font-semibold text-[18px]">Cardápio Completo</span>

@@ -9,7 +9,7 @@ export default function CarrinhoCard({item, aumentarQuantidade, diminuirQuantida
 
 
     return (
-        <div className="flex gap-4 p-2 rounded-2xl border border-(--text-chocolate) shadow-md">
+        <div className="flex gap-4 p-2 rounded-2xl border border-(--text-chocolate) shadow-md w-11/12 md:w-10/12 ">
             <div className="relative w-24 h-24 shrink-0">
                 <Image 
                 src={item.imagem} 
@@ -22,7 +22,7 @@ export default function CarrinhoCard({item, aumentarQuantidade, diminuirQuantida
 
             <div className="flex flex-col justify-between flex-1 min-w-0">
                 <div>
-                    <h3 className="font-bold text-(--text-chocolate) text-center text-base uppercase">
+                    <h3 className="font-bold text-(--text-chocolate) text-base uppercase">
                         {item.nome}
                     </h3>
                     

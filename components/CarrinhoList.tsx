@@ -1,7 +1,6 @@
 import { useCartStore } from "@/store/useCartStore";
 import CarrinhoCard from "./CarrinhoCard";
 import { useEffect } from "react";
-import { X } from "lucide-react";
 import Image from "next/image";
 
 export default function CarrinhoList({fecharCarrinho, abrirCarrinho}: {fecharCarrinho: () => void, abrirCarrinho: boolean}) {
@@ -16,7 +15,7 @@ export default function CarrinhoList({fecharCarrinho, abrirCarrinho}: {fecharCar
             return () => { document.body.style.overflow = 'unset'; };
     }, [abrirCarrinho]);
 
-    const {itens, atualizarQuantidade, removerItem} = useCartStore()
+    const {itens, atualizarQuantidade, removerItem} = useCartStore();
 
     if(itens.length === 0) {
         return <p className="text-center py-10 text-(--text-chocolate) text-lg">Sua sacola está vazia.</p>
@@ -45,17 +44,25 @@ export default function CarrinhoList({fecharCarrinho, abrirCarrinho}: {fecharCar
                 </button>
             </div>
 
-            <ul className="flex flex-col gap-3 w-full items-center">
-                {itens.map((item) => (
-                    <CarrinhoCard 
-                        key={item.id}
-                        item={item}
-                        aumentarQuantidade={() => atualizarQuantidade(item.id, item.quantidade + 1)}
-                        diminuirQuantidade={() => atualizarQuantidade(item.id, item.quantidade - 1)}
-                        removerItem={() => removerItem(item.id)}
-                    />
-                ))}
-            </ul>
+            <div className="w-full flex flex-col justify-center gap-10 items-center">
+                <div className="w-full px-3 text-lg font-semibold text-(--text-chocolate)">
+                    <p>Total:</p>
+                    <p>{}</p>
+                </div>
+
+                <ul className="flex flex-col gap-3 w-full items-center">
+                    {itens.map((item) => (
+                        <CarrinhoCard 
+                            key={item.id}
+                            item={item}
+                            aumentarQuantidade={() => atualizarQuantidade(item.id, item.quantidade + 1)}
+                            diminuirQuantidade={() => atualizarQuantidade(item.id, item.quantidade - 1)}
+                            removerItem={() => removerItem(item.id)}
+                        />
+                    ))}
+                </ul>
+            </div>
+
         </section>
     )
 
