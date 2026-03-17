@@ -7,48 +7,43 @@ import Image from "next/image";
 
 export default function CarrinhoCard({item, aumentarQuantidade, diminuirQuantidade, removerItem}: {item: CarrinhoItem, aumentarQuantidade: () => void, diminuirQuantidade: () => void, removerItem: () => void}) {
 
+
     return (
-        <div className="flex gap-4 items-center bg-(--bg-creme) p-3 rounded-2xl border border-(--text-chocolate) shadow-md">
-            <Image 
+        <div className="flex gap-4 p-3 rounded-2xl border border-(--text-chocolate) shadow-md">
+            <div className="relative w-24 h-24 shrink-0">
+                <Image 
                 src={item.imagem} 
-                alt={item.nome} 
-                className="w-16 h-16 rounded-xl object-cover"
+                className="w-full h-full rounded-2xl object-cover shadow-sm" 
+                alt={item.nome}
                 width={150}
                 height={150}
-            />
-            
-            <div className="flex-1">
-                <h3 className="font-bold text-[#3D1F16] text-sm leading-tight">{item.nome}</h3>
-                <p className="text-[#E27396] text-xs font-semibold">{formatarMoeda(item.preco)}</p>
-                
-                <div className="flex items-center justify-between mt-2">
-                <div className="flex items-center gap-2 bg-[#FDF8F1] rounded-lg px-2 py-1 border border-[#3D1F16]/10">
-                    <button 
-                        onClick={diminuirQuantidade} 
-                        className="text-[#3D1F16]"
-                    >
-                        <Minus 
-                            size={14} 
-                        />
-                        </button>
-                    <span className="font-bold text-sm">{item.quantidade}</span>
-                    <button 
-                        onClick={aumentarQuantidade} 
-                        className="text-[#3D1F16]"
-                    >
-                        <Plus 
-                            size={14} 
-                        />
-                    </button>
+                />
+            </div>
+
+            <div className="flex flex-col justify-between flex-1 min-w-0">
+                <div>
+                    <h3 className="font-bold text-(--text-chocolate) text-center text-base uppercase tracking-wider">
+                        {item.nome}
+                    </h3>
+                    
                 </div>
-                <button 
-                    onClick={removerItem} 
-                    className="text-red-400"
-                    >
-                        <Trash2 
-                            size={18} 
-                        />
-                    </button>
+
+                <div className="flex items-end justify-between mt-2">
+                    <div>
+                        <p className="text-(--accent-green-dark) font-bold text-sm">
+                            {item.quantidade}x - {formatarMoeda(item.preco * item.quantidade)}
+                        </p>
+                    </div>
+
+                    <div className="flex items-center gap-3">
+                        <button onClick={diminuirQuantidade} className="text-(--border-creme) bg-(--text-chocolate) border rounded-xl w-8 h-8 flex justify-center items-center">
+                            <Minus size={20}/>
+                        </button>
+                        
+                        <button onClick={aumentarQuantidade} className="text-(--border-creme) bg-(--text-chocolate) border rounded-xl w-8 h-8 flex justify-center items-center">
+                            <Plus size={20}/>
+                        </button>
+                    </div>
                 </div>
             </div>
         </div>

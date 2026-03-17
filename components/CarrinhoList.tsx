@@ -45,7 +45,7 @@ export default function CarrinhoList({fecharCarrinho, abrirCarrinho}: {fecharCar
                 </button>
             </div>
 
-            <ul className="flex flex-col gap-3 w-full">
+            <ul className="flex flex-col gap-3 w-full items-center">
                 {itens.map((item) => (
                     <CarrinhoCard 
                         key={item.id}
