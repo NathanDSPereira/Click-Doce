@@ -24,7 +24,7 @@ export default function CarrinhoList({fecharCarrinho, abrirCarrinho}: {fecharCar
 
     return (
         <section className="fixed w-screen h-screen inset-0 flex flex-col items-center  bg-(--bg-creme) backdrop-blur-sm z-100 gap-10">
-            <div className="w-full flex shadow-md border-[#E8DCC4] items-center justify-between h-1/5 p-2">
+            <div className="w-full flex shadow-md border-[#E8DCC4] items-center justify-between h-24 p-2">
                 <Image 
                     src="/images/icon.png" 
                     alt="Click & Doce"
