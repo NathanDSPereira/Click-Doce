@@ -6,13 +6,6 @@ import Image from "next/image";
 import { useEffect, useState } from "react";
 
 export default function ModalAgendamento({produtoAAgendar, fecharModal} : {produtoAAgendar: Produtos | null, fecharModal: () => void}) {
-
-    const [produtoQuantidade, setProdutoQuantidade] = useState(1);
-    const [produtoDataEntrega, setProdutoDataEntrega] = useState('');
-    const [produtoObservacao, setProdutoObservacao] = useState('')
-
-    const adicionarNovoItem = useCartStore((state) => state.adicionarNovoItem)
-
     useEffect(() => {
             if (produtoAAgendar) {
                 document.body.style.overflow = 'hidden'; // Trava o fundo
@@ -21,19 +14,73 @@ export default function ModalAgendamento({produtoAAgendar, fecharModal} : {produ
             }
             return () => { document.body.style.overflow = 'unset'; };
     }, [produtoAAgendar]);
+
+    const [produtoQuantidade, setProdutoQuantidade] = useState(1);
+    const [produtoDataEntrega, setProdutoDataEntrega] = useState('');
+    const [produtoObservacao, setProdutoObservacao] = useState('')
+    const [erroData, setErroData] = useState('')
     
-    
+    const [permiteEnviar, setPermiteEnviar] = useState<boolean>(false)
+
+    const adicionarNovoItem = useCartStore((state) => state.adicionarNovoItem)
+
     if(!produtoAAgendar) return
 
     const produto = produtoAAgendar;
 
+    const dataMinima = (): string => {
+        const hoje = new Date();
+        const ano = hoje.getFullYear();
+        const mes = String(hoje.getMonth() + 1).padStart(2, '0');
+        const dia = String(hoje.getDate()).padStart(2, '0');
+        return `${ano}-${mes}-${dia}`;
+    }
+
+    const fimDeSemana = (data: string): boolean => {
+        const date = new Date(data + 'T00:00:00');
+        const diaSemana = date.getDay();
+
+        return diaSemana === 0 || diaSemana === 6;
+    }
+
+    const validarData = (data: string): boolean => {
+        if (!data) {
+            setErroData('Por favor, escolha uma data!');
+            setPermiteEnviar(false)
+            return false;
+        }
+
+        if (fimDeSemana(data)) {
+            setErroData('Desculpe, não fazemos entregas aos sábados e domingos!');
+            setPermiteEnviar(false)
+            return false;
+        }
+
+        setErroData('');
+        setPermiteEnviar(true)
+        return true;
+    }
+
+    const mudarData = (valor: string) => {
+        setProdutoDataEntrega(valor);
+        if (valor) {
+            validarData(valor);
+        } else {
+            setErroData('');
+        }
+    }
+    
     const adicionarAoCarrinho = (e?: React.FormEvent) => {
         if(e) e.preventDefault()
         
-        if(!produtoDataEntrega) {
-            alert("Por favor, escolha uma data!");
+        if(!validarData(produtoDataEntrega)) {
             return 
         }
+
+        if(!permiteEnviar) {
+            return
+        }
+
         const novoPedido: CarrinhoItem = {
             id: Number(produto.id),
             nome: produto.nome,
@@ -96,13 +143,17 @@ export default function ModalAgendamento({produtoAAgendar, fecharModal} : {produ
                         <div className="flex flex-col gap-5 w-full text-(--text-chocolate)">
 
                             <label htmlFor="data" className="text-xl font-semibold">Data para entrega</label>
-                            <div id="data" className="flex justify-center">
+                            <div id="data" className="flex justify-center flex-col items-center gap-2">
                                 <input 
                                     value={produtoDataEntrega}
-                                    onChange={(e) => setProdutoDataEntrega(e.target.value)}    
+                                    onChange={(e) => mudarData(e.target.value)}    
                                     className="border border-(--text-chocolate) h-12 w-3/5 rounded-md shadow-2xl" 
-                                    type="date" 
+                                    type="date"
+                                    min={dataMinima()}
                                 />
+                                {erroData && (
+                                    <p className="text-red-600 text-sm font-semibold">{erroData}</p>
+                                )}
                             </div>
 
                         </div>
@@ -119,9 +170,10 @@ export default function ModalAgendamento({produtoAAgendar, fecharModal} : {produ
                             />
                         </div>
 
-                        <button 
+                        <button
                             onClick={adicionarAoCarrinho}
-                            className="w-60 h-20 bg-(--text-chocolate) flex items-center gap-3 p-1 justify-center font-bold text-(--bg-creme) rounded-xl shadow-2xl text-xl">
+                            className={permiteEnviar ? `` : `w-60 h-20 bg-(--text-chocolate) flex items-center gap-3 p-1 justify-center font-bold text-(--bg-creme) rounded-xl shadow-2xl text-xl`
+                            }>
                             <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" className="lucide lucide-shopping-bag-icon lucide-shopping-bag"><path d="M16 10a4 4 0 0 1-8 0"/><path d="M3.103 6.034h17.794"/><path d="M3.4 5.467a2 2 0 0 0-.4 1.2V20a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6.667a2 2 0 0 0-.4-1.2l-2-2.667A2 2 0 0 0 17 2H7a2 2 0 0 0-1.6.8z"/></svg>
                             Adicionar a sacola
                         </button>
