@@ -9,7 +9,7 @@
   },
   {
     "id": 40,
-    "nome": "Banoffee no Pote",
+    "nome": "Banoffee de pote",
     "preco": 12.00,
     "estoque": 0,
     "permitirAgendamento": true,
@@ -17,7 +17,7 @@
     },
   {
     "id": 30,
-    "nome": "Mousse de Limão",
+    "nome": "Bombom de pote",
     "preco": 9.00,
     "estoque": 5,
     "permitirAgendamento": false,

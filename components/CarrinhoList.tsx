@@ -2,6 +2,7 @@ import { useCartStore } from "@/store/useCartStore";
 import CarrinhoCard from "./CarrinhoCard";
 import { useEffect } from "react";
 import Image from "next/image";
+import { formatarMoeda } from "@/Utils/FormatarMoeda";
 
 export default function CarrinhoList({fecharCarrinho, abrirCarrinho}: {fecharCarrinho: () => void, abrirCarrinho: boolean}) {
 
@@ -21,14 +22,16 @@ export default function CarrinhoList({fecharCarrinho, abrirCarrinho}: {fecharCar
         return <p className="text-center py-10 text-(--text-chocolate) text-lg">Sua sacola está vazia.</p>
     }
 
+    const valorTotal = itens.reduce((acumulador, item) => acumulador + (item.quantidade * item.preco), 0);
+
     return (
-        <section className="fixed w-screen h-screen inset-0 flex flex-col items-center  bg-(--bg-creme) backdrop-blur-sm z-100 gap-10">
+        <section className="fixed w-screen h-screen inset-0 flex flex-col items-center  bg-(--bg-creme) backdrop-blur-sm z-100 gap-10 overflow-y-auto">
             <div className="w-full flex shadow-md border-[#E8DCC4] items-center justify-between h-24 p-2">
                 <Image 
                     src="/images/icon.png" 
                     alt="Click & Doce"
                     className='rounded-full bg-(--accent-green) p-2'
-                    width={44} 
+                    width={50} 
                     height={30} 
                 />
 
@@ -45,12 +48,12 @@ export default function CarrinhoList({fecharCarrinho, abrirCarrinho}: {fecharCar
             </div>
 
             <div className="w-full flex flex-col justify-center gap-10 items-center">
-                <div className="w-full px-3 text-lg font-semibold text-(--text-chocolate)">
-                    <p>Total:</p>
-                    <p>{}</p>
+                <div className="w-full px-5 text-xl flex justify-between items-center text-(--text-chocolate)">
+                    <p className="">Total:</p>
+                    <p className="font-bold">{formatarMoeda(valorTotal)}</p>
                 </div>
 
-                <ul className="flex flex-col gap-3 w-full items-center">
+                <ul className="flex flex-col gap-5 w-full items-center">
                     {itens.map((item) => (
                         <CarrinhoCard 
                             key={item.id}

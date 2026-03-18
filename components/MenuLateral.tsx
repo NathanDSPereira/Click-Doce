@@ -2,7 +2,7 @@ import { BookOpen, MessageCircle, ShoppingBag, X } from 'lucide-react';
 import { useEffect } from 'react';
 import Image from 'next/image';
 
-export default function MenuLateral({fecharMenu, menuAberto} : {fecharMenu: () => void, menuAberto: boolean}) {
+export default function MenuLateral({fecharMenu, menuAberto, abrirCarrinho} : {fecharMenu: () => void, menuAberto: boolean, abrirCarrinho: () => void}) {
 
     useEffect(() => {
         if (menuAberto) {
@@ -12,6 +12,11 @@ export default function MenuLateral({fecharMenu, menuAberto} : {fecharMenu: () =
         }
         return () => { document.body.style.overflow = 'unset'; };
     }, [menuAberto]);
+
+    const abrirModalCarrinho = () => {
+        fecharMenu()
+        abrirCarrinho()
+    }
 
     return(
         <section className="fixed top-0 left-0 w-full h-screen bg-(--text-chocolate)/80 shadow-lg z-300 backdrop-blur-sm inset-0 animate-in transition-all duration-300">
@@ -47,20 +52,22 @@ export default function MenuLateral({fecharMenu, menuAberto} : {fecharMenu: () =
                 </div>
 
                 <nav className="flex-1 px-3 space-y-3 mt-6 mb-6">
-                    <a href="#" className="flex items-center gap-4 px-6 py-4 text-(--text-chocolate) rounded-2xl active:border-(--accent-green) transition-all group">
+                    <button className="flex items-center gap-4 px-6 py-4 text-(--text-chocolate) rounded-2xl active:border-(--accent-green) transition-all group">
                         <BookOpen size={22} />
                         <span className="font-semibold text-[18px]">Cardápio Completo</span>
-                    </a>
+                    </button>
 
-                    <a href="#" className="flex items-center gap-4 px-6 py-4 text-(--text-chocolate) rounded-2xl active:border-(--accent-green) transition-all group">
+                    <button 
+                        onClick={abrirModalCarrinho}
+                        className="flex items-center gap-4 px-6 py-4 text-(--text-chocolate) rounded-2xl active:border-(--accent-green) transition-all group">
                         <ShoppingBag size={22} />
                         <span className="font-semibold text-[18px]">Meus Pedidos</span>
-                    </a>
+                    </button>
 
-                    <a href="#" className="flex items-center gap-4 px-6 py-4 text-(--text-chocolate) active:border-(--accent-green) rounded-2xl transition-all group">
+                    <button className="flex items-center gap-4 px-6 py-4 text-(--text-chocolate) active:border-(--accent-green) rounded-2xl transition-all group">
                         <MessageCircle size={22} />
                         <span className="font-semibold text-[18px]">WhatsApp</span>
-                    </a>
+                    </button>
                 </nav>
             </aside>
         </section>

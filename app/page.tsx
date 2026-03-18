@@ -36,6 +36,8 @@ export default function Home() {
 
   const DocesLista: Produtos[] = BdDoces;
 
+  const docesAProntaEntrega = DocesLista.filter((doce) => doce.estoque > 0)
+
   const [abrirMenu, setAbrirMenu] = useState<boolean>(false);
   const [produtoPedirAgora, setProdutoPedirAgora] = useState<Produtos | null>(null);
   const [abrirCarrinho, seAbrirCarrinho] = useState<boolean>(false);
@@ -73,11 +75,13 @@ export default function Home() {
       />
       
       <Header 
-        abrirMenuLateral={abrirMenuLateral} 
+        abrirMenuLateral={abrirMenuLateral}
+        abrirCarrinho={abrirModalCarrinho}
       />
 
       {abrirMenu && (
         <MenuLateral
+          abrirCarrinho={abrirModalCarrinho}
           menuAberto={abrirMenu}
           fecharMenu={fecharMenuLateral}
         />
@@ -91,7 +95,7 @@ export default function Home() {
       )}
       
       <ListProduto 
-        DocesLista={DocesLista}
+        DocesLista={docesAProntaEntrega}
         pedirProduto={abrirModalPedirProduto}
       />
 

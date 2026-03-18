@@ -34,12 +34,12 @@ removerItem
                 <div className="flex items-end justify-between mt-4">
 
                     <div className="flex items-center gap-3">
-                        <button onClick={diminuirQuantidade} className="text-(--border-creme) bg-(--text-chocolate) border rounded-xl w-9 h-9 flex justify-center items-center">
-                            <Minus size={20}/>
+                        <button onClick={diminuirQuantidade} className="active:scale-95 transition-all text-(--border-creme) bg-(--text-chocolate) border rounded-xl w-9 h-9 flex justify-center items-center">
+                            <Minus size={25}/>
                         </button>
                         
-                        <button onClick={aumentarQuantidade} className="text-(--border-creme) bg-(--text-chocolate) border rounded-xl w-9 h-9 flex justify-center items-center">
-                            <Plus size={20}/>
+                        <button onClick={aumentarQuantidade} className="active:scale-95 transition-all text-(--border-creme) bg-(--text-chocolate) border rounded-xl w-9 h-9 flex justify-center items-center">
+                            <Plus size={25}/>
                         </button>
                     </div>
                     
