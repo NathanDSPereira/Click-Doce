@@ -1,7 +1,7 @@
 import { CarrinhoItem } from "@/interface/CarrinhoItem";
 import { Produtos } from "@/interface/Produtos";
 import { useCartStore } from "@/store/useCartStore";
-import { X } from "lucide-react";
+import { X, Plus, Minus } from "lucide-react";
 import Image from "next/image";
 import { useEffect, useState } from "react";
 
@@ -98,11 +98,12 @@ export default function ModalAgendamento({produtoAAgendar, fecharModal} : {produ
     }
     
     return (
-        <section className="fixed w-screen h-screen inset-0 flex items-center justify-center bg-(--bg-creme)/80 backdrop-blur-sm z-100 overflow-y-auto overflow-x-hidden">
-            <div className="bg-(--bg-creme) rounded-2xl relative my-auto border border-(--text-chocolate)">
-                <button onClick={fecharModal} className="text-xl rounded-full bg-(--bg-creme) w-13 h-13 flex justify-center items-center font-bold uppercase absolute top-3 right-5">
-                    <X size={37} className="text-(--text-chocolate)" />
-                </button>
+        <section className="fixed w-screen h-screen inset-0 flex flex-col items-center justify border border-(--text-chocolate) rounded-2xl bg-(--bg-creme) z-100 overflow-x-hidden">
+                <div className="w-full flex justify-end items-center p-4 h-20 bg-(--text-chocolate)/90 mb-4">    
+                    <button onClick={fecharModal} className="text-xl rounded-full w-15 h-15 flex justify-center items-center font-bold uppercase">
+                        <X size={40} className="text-(--bg-creme)" />
+                    </button>
+                </div>
 
                 <div className="flex flex-col gap-10 pb-10">
                     <div className="flex flex-col items-center gap-3 h-auto">
@@ -119,8 +120,7 @@ export default function ModalAgendamento({produtoAAgendar, fecharModal} : {produ
                         </div>
                     </div>
 
-                    <form className="flex flex-col gap-16 justify-center items-center w-full px-5 font-sans">
-
+                    <form className="flex flex-col gap-16 justify-center items-center w-full px-6 font-sans">
                         <div className="flex flex-col w-full gap-5">
 
                             <label htmlFor="quantidade" className="text-(--text-chocolate) text-xl font-semibold">Quantidade</label>
@@ -128,14 +128,18 @@ export default function ModalAgendamento({produtoAAgendar, fecharModal} : {produ
                                 <button
                                     type="button"
                                     onClick={() => setProdutoQuantidade(q => Math.max(1, q - 1))}
-                                    className="text-(--text-chocolate) border border-(--text-chocolate) w-20 h-12 rounded-md text-bold text-3xl flex justify-center items-center shadow-2xl">-</button>
+                                    className="active:scale-95 transition-all border border-(--bg-creme) text-(--bg-creme) bg-(--accent-green-dark) w-20 h-12 rounded-md text-bold text-3xl flex justify-center items-center shadow-2xl">
+                                        <Minus size={25}/>
+                                    </button>
 
                                 <p className="text-(--text-chocolate) text-2xl">{produtoQuantidade}</p>
                                 
                                 <button
                                     type="button"
                                     onClick={() => setProdutoQuantidade(q => q + 1)}
-                                    className="border border-(--bg-creme) text-(--bg-creme) bg-(--accent-green-dark) w-20 h-12 rounded-md text-bold text-3xl flex justify-center items-center shadow-2xl">+</button>
+                                    className="active:scale-95 transition-all border border-(--bg-creme) text-(--bg-creme) bg-(--accent-green-dark) w-20 h-12 rounded-md text-bold text-3xl flex justify-center items-center shadow-2xl">
+                                        <Plus size={25}/>
+                                    </button>
                             </div>
 
                         </div>
@@ -160,11 +164,12 @@ export default function ModalAgendamento({produtoAAgendar, fecharModal} : {produ
 
                         <div className="flex flex-col gap-5 text-(--text-chocolate) w-full">
 
-                            <label htmlFor="observacao" className="text-xl font-semibold">Obervação</label>
+                            <label htmlFor="observacao" className="text-xl font-semibold">Observação</label>
                             <textarea
                                 value={produtoObservacao}
                                 onChange={(e) => setProdutoObservacao(e.target.value)}
-                                id="observacao" 
+                                id="observacao"
+                                rows={4}
                                 className="border border-(--text-chocolate) rounded-sm placeholder:pt-2 pl-2"
                                 placeholder="Onde você gostaria de receber?"
                             />
@@ -179,7 +184,6 @@ export default function ModalAgendamento({produtoAAgendar, fecharModal} : {produ
                         </button>
                     </form>
                 </div>
-            </div>
         </section>
     )
 }

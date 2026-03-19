@@ -23,6 +23,7 @@ export default function CarrinhoList({fecharCarrinho, abrirCarrinho}: {fecharCar
     }
 
     const valorTotal = itens.reduce((acumulador, item) => acumulador + (item.quantidade * item.preco), 0);
+    const totalItens = itens.reduce((acumulador, item) => acumulador + item.quantidade, 0)
 
     return (
         <section className="fixed w-screen h-screen inset-0 flex flex-col items-center  bg-(--bg-creme) backdrop-blur-sm z-100 gap-10 overflow-y-auto">
@@ -48,9 +49,14 @@ export default function CarrinhoList({fecharCarrinho, abrirCarrinho}: {fecharCar
             </div>
 
             <div className="w-full flex flex-col justify-center gap-10 items-center">
-                <div className="w-full px-5 text-xl flex justify-between items-center text-(--text-chocolate)">
-                    <p className="">Total:</p>
-                    <p className="font-bold">{formatarMoeda(valorTotal)}</p>
+                <div className="w-full px-5 flex-col">
+                    <div className=" text-xl flex justify-between items-center text-(--text-chocolate)">
+                        <p>Total:</p>
+                        <p className="font-bold">{formatarMoeda(valorTotal)}</p>
+                    </div>
+                    <div className="mt-3">
+                        <p>Itens: ({totalItens})</p>
+                    </div>
                 </div>
 
                 <ul className="flex flex-col gap-5 w-full items-center">

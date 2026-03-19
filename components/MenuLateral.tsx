@@ -52,19 +52,19 @@ export default function MenuLateral({fecharMenu, menuAberto, abrirCarrinho} : {f
                 </div>
 
                 <nav className="flex-1 px-3 space-y-3 mt-6 mb-6">
-                    <button className="flex items-center gap-3 px-6 py-4 text-(--text-chocolate) rounded-2xl active:border-(--accent-green) transition-all group">
+                    <button className="flex items-center w-full gap-3 px-6 py-4 text-(--text-chocolate) rounded-2xl active:border-(--accent-green) transition-all group">
                         <BookOpen size={22} />
                         <span className="font-semibold text-[18px]">Cardápio Completo</span>
                     </button>
 
                     <button 
                         onClick={abrirModalCarrinho}
-                        className="flex items-center gap-3 px-6 py-4 text-(--text-chocolate) rounded-2xl active:border-(--accent-green) transition-all group">
+                        className="flex items-center w-full gap-3 px-6 py-4 text-(--text-chocolate) rounded-2xl active:border-(--accent-green) transition-all group">
                         <ShoppingBag size={22} />
                         <span className="font-semibold text-[18px]">Meus Pedidos</span>
                     </button>
 
-                    <button className="flex items-center gap-3 px-6 py-4 text-(--text-chocolate) active:border-(--accent-green) rounded-2xl transition-all group">
+                    <button className="flex items-center w-full gap-3 px-6 py-4 text-(--text-chocolate) active:border-(--accent-green) rounded-2xl transition-all group">
                         <MessageCircle size={22} />
                         <span className="font-semibold text-[18px]">WhatsApp</span>
                     </button>
