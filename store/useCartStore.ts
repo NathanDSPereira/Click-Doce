@@ -35,7 +35,7 @@ export const useCartStore = create<CarrinhoListaState>()(
             atualizarQuantidade: (id, novaQuantidade) => 
                 set((state) => ({
                     itens: state.itens.map((item) =>
-                        item.id === id ? {...item, quantidade: novaQuantidade} : item
+                        item.id === id ? {...item, quantidade: Math.max(1, novaQuantidade)} : item
                     ),
                 })
             ),

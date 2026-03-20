@@ -65,7 +65,13 @@ export default function CarrinhoList({fecharCarrinho, abrirCarrinho}: {fecharCar
                             key={item.id}
                             item={item}
                             aumentarQuantidade={() => atualizarQuantidade(item.id, item.quantidade + 1)}
-                            diminuirQuantidade={() => atualizarQuantidade(item.id, item.quantidade - 1)}
+                            diminuirQuantidade={() => {
+                                if (item.quantidade > 1) {
+                                    atualizarQuantidade(item.id, item.quantidade - 1);
+                                } else {
+                                    removerItem(item.id);
+                                }
+                            }}
                             removerItem={() => removerItem(item.id)}
                         />
                     ))}
