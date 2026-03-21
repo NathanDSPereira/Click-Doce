@@ -19,7 +19,7 @@ export default function PizzaCard({ produtoCard, pedirProduto}: {produtoCard: Pr
                 />
 
                 <div className="flex gap-1 justify-between px-3">
-                    <h3 className="font-medium text-[16px]">{produtoCard.nome}</h3>
+                    <h3 className="font-medium text-[16px] text-(--text-chocolate)">{produtoCard.nome}</h3>
                 
                     <p className="text-zinc-600 text-sm flex items-center text-center gap-1">
                         <Star

@@ -10,7 +10,7 @@ removerItem
 }: { item: CarrinhoItem, aumentarQuantidade: () => void, diminuirQuantidade: () => void, removerItem: () => void
 }) {
     return (
-        <div className="flex gap-4 p-2 rounded-2xl border border-(--text-chocolate) shadow-md w-11/12 md:w-10/12 ">
+        <div className="flex gap-4 p-2 rounded-2xl border border-(--text-chocolate) shadow-md w-full md:w-10/12 ">
             <div className="relative w-24 h-24 shrink-0">
                 <Image 
                     src={item.imagem} 

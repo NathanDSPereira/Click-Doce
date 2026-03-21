@@ -3,6 +3,8 @@ import CarrinhoCard from "./CarrinhoCard";
 import { useEffect } from "react";
 import Image from "next/image";
 import { formatarMoeda } from "@/Utils/FormatarMoeda";
+import { CarrinhoItem } from "@/interface/CarrinhoItem";
+import { formatarData } from "@/Utils/FormatarData";
 
 export default function CarrinhoList({fecharCarrinho, abrirCarrinho}: {fecharCarrinho: () => void, abrirCarrinho: boolean}) {
 
@@ -18,15 +20,21 @@ export default function CarrinhoList({fecharCarrinho, abrirCarrinho}: {fecharCar
 
     const {itens, atualizarQuantidade, removerItem} = useCartStore();
 
-    if(itens.length === 0) {
-        return <p className="text-center py-10 text-(--text-chocolate) text-lg">Sua sacola está vazia.</p>
-    }
-
     const valorTotal = itens.reduce((acumulador, item) => acumulador + (item.quantidade * item.preco), 0);
     const totalItens = itens.reduce((acumulador, item) => acumulador + item.quantidade, 0)
 
+    const itensAgrupadosPorDatas = itens.reduce((acumulador, item) => {
+        const data = item.dataEntrega;
+        
+        if(!acumulador[data]) acumulador[data] = [];
+
+        acumulador[data].push(item);
+
+        return acumulador
+    }, {} as Record<string, CarrinhoItem[]>)
+
     return (
-        <section className="fixed w-screen h-screen inset-0 flex flex-col items-center  bg-(--bg-creme) backdrop-blur-sm z-100 gap-10 overflow-y-auto">
+        <section className="fixed w-screen h-screen inset-0 flex flex-col items-center  bg-(--bg-creme) backdrop-blur-sm z-100 gap-10 overflow-y-auto pb-20">
             <div className="w-full flex shadow-md border-[#E8DCC4] items-center justify-between h-24 p-2">
                 <Image 
                     src="/images/icon.png" 
@@ -44,12 +52,12 @@ export default function CarrinhoList({fecharCarrinho, abrirCarrinho}: {fecharCar
                     onClick={fecharCarrinho}
                     className=" rounded-full bg-(--text-chocolate) w-10 h-10 transition-colors flex justify-center items-center"
                 >
-                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" className=" text-(--bg-creme) lucide lucide-log-out-icon lucide-log-out"><path d="m16 17 5-5-5-5"/><path d="M21 12H9"/><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/></svg>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className=" text-(--bg-creme) lucide lucide-log-out-icon lucide-log-out"><path d="m16 17 5-5-5-5"/><path d="M21 12H9"/><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/></svg>
                 </button>
             </div>
 
             <div className="w-full flex flex-col justify-center gap-10 items-center">
-                <div className="w-full px-5 flex-col">
+                <div className="w-full px-5 flex-col text-(--text-chocolate) pb-6 border-b border-(--text-chocolate)/20">
                     <div className=" text-xl flex justify-between items-center text-(--text-chocolate)">
                         <p>Total:</p>
                         <p className="font-bold">{formatarMoeda(valorTotal)}</p>
@@ -59,26 +67,36 @@ export default function CarrinhoList({fecharCarrinho, abrirCarrinho}: {fecharCar
                     </div>
                 </div>
 
-                <ul className="flex flex-col gap-5 w-full items-center">
-                    {itens.map((item) => (
-                        <CarrinhoCard 
-                            key={item.id}
-                            item={item}
-                            aumentarQuantidade={() => atualizarQuantidade(item.id, item.quantidade + 1)}
-                            diminuirQuantidade={() => {
-                                if (item.quantidade > 1) {
-                                    atualizarQuantidade(item.id, item.quantidade - 1);
-                                } else {
-                                    removerItem(item.id);
-                                }
-                            }}
-                            removerItem={() => removerItem(item.id)}
-                        />
-                    ))}
-                </ul>
-            </div>
+                {itens.length === 0 ? (
+                    <p className="text-center py-10 text-(--text-chocolate) text-lg">Sua sacola está vazia.</p>
+                ) : (
+                    <ul className="flex flex-col gap-10 w-full items-center px-5">
+                        {Object.entries(itensAgrupadosPorDatas).map(([data, itens]) => (
+                            <div key={data} className="w-full items-center flex flex-col gap-5">
+                                <h3 className="text-(--text-chocolate) text-lg font-semibold w-full flex justify-start">
+                                    Entrega: {formatarData(data)}
+                                </h3>
 
+                                {itens.map((item) => (
+                                    <CarrinhoCard
+                                        key={item.id}
+                                        item={item}
+                                        aumentarQuantidade={() => atualizarQuantidade(item.id, item.quantidade + 1)}
+                                        diminuirQuantidade={() => {
+                                            if(item.quantidade > 1) {
+                                                atualizarQuantidade(item.id, item.quantidade - 1);
+                                            } else {
+                                                removerItem(item.id)
+                                            }
+                                        }}
+                                        removerItem={() => removerItem(item.id)}
+                                    />
+                                ))}
+                            </div>
+                        ))}
+                    </ul>
+                )}
+            </div>
         </section>
     )
-
 }

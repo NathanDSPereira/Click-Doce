@@ -82,7 +82,7 @@ export default function ModalAgendamento({produtoAAgendar, fecharModal} : {produ
         }
 
         const novoPedido: CarrinhoItem = {
-            id: Number(produto.id),
+            id: `${produto.id}-${produtoDataEntrega}-${encodeURIComponent(produtoObservacao || '')}`,
             nome: produto.nome,
             preco: produto.preco,
             imagem: produto.imagem_url,
