@@ -13,7 +13,8 @@
   --border-bege: #e8dcc4;
   --accent-green: #8c946c;
   --accent-green-dark: #283105;
-  --border-creme: #E8DCC4
+  --border-creme: #E8DCC4;
+  --bg-branco: #FDF8F1;
 }
 
 @layer utilities {

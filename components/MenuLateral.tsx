@@ -19,8 +19,8 @@ export default function MenuLateral({fecharMenu, menuAberto, abrirCarrinho} : {f
     }
 
     return(
-        <section className="fixed top-0 left-0 w-full h-screen bg-(--text-chocolate)/80 shadow-lg z-300 backdrop-blur-sm inset-0 animate-in transition-all duration-300">
-            <aside className='sm:w-2/3 md:w-1/2 w-10/12 h-full bg-(--bg-creme) z-70 shadow-2xl rounded-r-[2.5rem] flex flex-col justify-around'>
+        <section className="fixed top-0 left-0 w-full h-screen bg-black/60 backdrop-blur-sm shadow-lg z-300 inset-0 animate-in transition-all duration-300">
+            <aside className='sm:w-2/3 md:w-1/2 w-10/12 h-full bg-(--bg-branco) z-70 shadow-2xl rounded-r-[2.5rem] flex flex-col justify-around'>
                 <div className="p-9 pb-10 border-b border-(--text-chocolate)/10">
                     <div className="flex justify-between items-start">
                         <div className="space-y-4">

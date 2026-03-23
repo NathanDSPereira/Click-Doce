@@ -5,12 +5,13 @@ import Image from "next/image";
 import { formatarMoeda } from "@/Utils/FormatarMoeda";
 import { CarrinhoItem } from "@/interface/CarrinhoItem";
 import { formatarData } from "@/Utils/FormatarData";
+import { useUserState } from "@/store/useUserState";
 
-export default function CarrinhoList({fecharCarrinho, abrirCarrinho}: {fecharCarrinho: () => void, abrirCarrinho: boolean}) {
+export default function CarrinhoList({fecharCarrinho, abrirCarrinho, abrirModalUsuario, fecharModalUsuario}: {fecharCarrinho: () => void, abrirCarrinho: boolean, abrirModalUsuario: () => void, fecharModalUsuario: () => void}) {
 
     useEffect(() => {
             if (abrirCarrinho) {
-            document.body.style.overflow = 'hidden'; // Trava o fundo
+            document.body.style.overflow = 'hidden';
             } else {
                 document.body.style.overflow = 'unset';
             }
@@ -19,9 +20,12 @@ export default function CarrinhoList({fecharCarrinho, abrirCarrinho}: {fecharCar
     }, [abrirCarrinho]);
 
     const {itens, atualizarQuantidade, removerItem} = useCartStore();
+    const {nome, telefone, atualizarDados} = useUserState();
 
     const valorTotal = itens.reduce((acumulador, item) => acumulador + (item.quantidade * item.preco), 0);
     const totalItens = itens.reduce((acumulador, item) => acumulador + item.quantidade, 0)
+
+    const permiteFinalizar = totalItens > 0;
 
     const itensAgrupadosPorDatas = itens.reduce((acumulador, item) => {
         const data = item.dataEntrega;
@@ -32,6 +36,14 @@ export default function CarrinhoList({fecharCarrinho, abrirCarrinho}: {fecharCar
 
         return acumulador
     }, {} as Record<string, CarrinhoItem[]>)
+
+    const botaoFinalizar = () => {
+        if(!nome || nome.trim() === '') {
+            abrirModalUsuario();
+        } else {
+            return
+        }
+    }
 
     return (
         <section className="fixed w-screen h-screen inset-0 flex flex-col items-center  bg-(--bg-creme) backdrop-blur-sm z-100 gap-10 overflow-y-auto pb-20">
@@ -56,7 +68,7 @@ export default function CarrinhoList({fecharCarrinho, abrirCarrinho}: {fecharCar
                 </button>
             </div>
 
-            <div className="w-full flex flex-col justify-center gap-10 items-center">
+            <div className="w-full flex flex-col justify-between h-full gap-10 items-center">
                 <div className="w-full px-5 flex-col text-(--text-chocolate) pb-6 border-b border-(--text-chocolate)/20">
                     <div className=" text-xl flex justify-between items-center text-(--text-chocolate)">
                         <p>Total:</p>
@@ -96,6 +108,16 @@ export default function CarrinhoList({fecharCarrinho, abrirCarrinho}: {fecharCar
                         ))}
                     </ul>
                 )}
+
+                <div className="w-full flex justify-center mt-10">
+                    <button
+                        onClick={botaoFinalizar}
+                        disabled={!permiteFinalizar}
+                        className={`w-70 h-20 flex items-center transition-all gap-3 p-1 justify-center font-bold rounded-xl shadow-2xl text-xl ${permiteFinalizar ? `bg-(--text-chocolate) text-(--bg-creme) active:scale-95` :`bg-slate-300 text-gray-500 cursor-not-allowed`}` 
+                        }>
+                        Finalizar a compra
+                    </button>
+                </div>
             </div>
         </section>
     )

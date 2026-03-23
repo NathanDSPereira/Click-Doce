@@ -98,14 +98,14 @@ export default function ModalAgendamento({produtoAAgendar, fecharModal} : {produ
     }
     
     return (
-        <section className="fixed w-screen h-screen inset-0 flex flex-col items-center justify border border-(--text-chocolate) rounded-2xl bg-(--bg-creme) z-100 overflow-x-hidden">
+        <section className="fixed w-screen h-screen inset-0 flex flex-col items-center justify border border-(--text-chocolate) rounded-2xl bg-(--bg-creme)/90 backdrop-blur-sm z-100 overflow-x-hidden">
                 <div className="w-full flex justify-end items-center p-4 h-20 bg-(--text-chocolate)/90 mb-4">    
                     <button onClick={fecharModal} className="text-xl rounded-full w-15 h-15 flex justify-center items-center font-bold uppercase">
                         <X size={40} className="text-(--bg-creme)" />
                     </button>
                 </div>
 
-                <div className="flex flex-col gap-10 pb-10">
+                <div className="flex flex-col gap-10 pb-10 shadow-md bg-(--bg-creme)">
                     <div className="flex flex-col items-center gap-3 h-auto">
                         <Image
                             src={produto.imagem_url}

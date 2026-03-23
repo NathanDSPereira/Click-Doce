@@ -3,7 +3,7 @@ import Image from 'next/image';
 export default function Header({abrirMenuLateral, abrirCarrinho} : {abrirMenuLateral: () => void, abrirCarrinho: () => void}) {
   return (
     <header className="relative h-70 w-full flex flex-col overflow-hidden md:h-96 lg:h-125 bg-(--bg-creme)">
-      <nav className="fixed border-b shadow-md z-100 border-[#E8DCC4] w-full flex justify-between items-center h-16 backdrop-blur-md px-4">
+      <nav className="fixed border-b shadow-md z-100 border-[#E8DCC4] w-full flex justify-between items-center h-16 backdrop-blur-sm px-4">
         <button
           onClick={abrirMenuLateral}
           className='cursor-pointer text-(--text-chocolate)'>
