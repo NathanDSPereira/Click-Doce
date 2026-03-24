@@ -113,7 +113,7 @@ export default function CarrinhoList({fecharCarrinho, abrirCarrinho, abrirModalU
                     <button
                         onClick={botaoFinalizar}
                         disabled={!permiteFinalizar}
-                        className={`w-70 h-20 flex items-center transition-all gap-3 p-1 justify-center font-bold rounded-xl shadow-2xl text-xl ${permiteFinalizar ? `bg-(--text-chocolate) text-(--bg-creme) active:scale-95` :`bg-slate-300 text-gray-500 cursor-not-allowed`}` 
+                        className={`w-70 h-18 flex items-center transition-all gap-3 p-1 justify-center font-bold rounded-xl shadow-2xl text-xl ${permiteFinalizar ? `bg-(--text-chocolate) text-(--bg-creme) active:scale-95` :`bg-slate-300 text-gray-500 cursor-not-allowed`}` 
                         }>
                         Finalizar a compra
                     </button>
