@@ -61,6 +61,7 @@ export default function ModalAgendamento({produtoAAgendar, fecharModal} : {produ
         return true;
     }
 
+
     const mudarData = (valor: string) => {
         setProdutoDataEntrega(valor);
         if (valor) {

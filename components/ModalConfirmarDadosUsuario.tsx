@@ -17,14 +17,27 @@ export function ModalConfirmarDadosUsuario({ aberto, fecharModal }: {aberto: boo
   
   const [nome, setNome] = useState('');
   const [telefone, setTelefone] = useState('');
-  const [permiteEnviar, setPermiteEnviar] = useState<boolean>(false)
 
   if (!aberto) return null;
 
+  const validarUsuarioValido = () => {
+    const nomeRegex = /^[a-záàâãéèêíïóôõöúçñ\s]{3,}$/i;
+    return nomeRegex.test(nome.trim())
+  }
+  
+  const validarTelefoneValido = () => {
+    const telefoneLimpo = telefone.replace(/\D/g, '');
+    return telefoneLimpo.length === 11;
+  }
+
+  const nomeValido = validarUsuarioValido();
+  const telefoneValido = validarTelefoneValido()
+  const permiteEnviar = nomeValido && telefoneValido
+
   const salvarUsuario = () => {
-    if (nome.trim() && telefone.trim()) {
+
+    if (permiteEnviar) {
       atualizarDadosUsuario({ nome, telefone });
-      
       fecharModal();
     } else {
         alert("Por favor, preencha seu nome e telefone para continuarmos! 🍬");
@@ -84,8 +97,17 @@ export function ModalConfirmarDadosUsuario({ aberto, fecharModal }: {aberto: boo
             />
           </div>
 
+          {!nomeValido && nome.length > 0 && (
+            <p className='flex w-full text-sm text-red-600 justify-center'>Nome inválido</p>
+          )}
+
+          {/* {!telefone && telefone.length > 0 && (
+            <p className='flex w-full text-sm text-red-600 justify-center'>Nome inválido</p>
+          )} */}
+
           <div className='w-full flex justify-center items-center mt-6'>
             <button 
+              type='button'
               onClick={salvarUsuario}
               disabled={!permiteEnviar}
               className={`w-60 h-18 flex items-center gap-3 p-1 justify-center font-bold rounded-xl shadow-2xl text-xl ${permiteEnviar ? `bg-(--text-chocolate) text-(--bg-creme)` :`bg-slate-300 text-gray-500 cursor-not-allowed`}` 
