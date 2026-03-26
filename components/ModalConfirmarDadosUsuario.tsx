@@ -34,6 +34,23 @@ export function ModalConfirmarDadosUsuario({ aberto, fecharModal }: {aberto: boo
   const telefoneValido = validarTelefoneValido()
   const permiteEnviar = nomeValido && telefoneValido
 
+  const formatarTelefone = (valor: string) => {
+    const apenasNumeros = valor.replace(/\D/g, '');
+    let telefoneFormatado = apenasNumeros;
+    
+    if (apenasNumeros.length > 0) {
+      telefoneFormatado = apenasNumeros.slice(0, 2); 
+    }
+    if (apenasNumeros.length > 2) {
+      telefoneFormatado = `${apenasNumeros.slice(0, 2)} ${apenasNumeros.slice(2, 7)}`; 
+    }
+    if (apenasNumeros.length > 7) {
+      telefoneFormatado = `${apenasNumeros.slice(0, 2)} ${apenasNumeros.slice(2, 7)}-${apenasNumeros.slice(7, 11)}`;
+    }
+    
+    return telefoneFormatado;
+  };
+
   const salvarUsuario = () => {
 
     if (permiteEnviar) {
@@ -92,7 +109,7 @@ export function ModalConfirmarDadosUsuario({ aberto, fecharModal }: {aberto: boo
               id='telefoneUsuario'
               placeholder="WhatsApp (ex: 34 99999-0000)"
               value={telefone}
-              onChange={(e) => setTelefone(e.target.value)}
+              onChange={(e) => setTelefone(formatarTelefone(e.target.value))}
               className="w-full pl-12 pr-4 py-4 rounded-2xl border border-[#3D1F16]/10 outline-none focus:border-[#E27396] transition-colors bg-white text-(--text-chocolate)"
             />
           </div>
@@ -101,9 +118,9 @@ export function ModalConfirmarDadosUsuario({ aberto, fecharModal }: {aberto: boo
             <p className='flex w-full text-sm text-red-600 justify-center'>Nome inválido</p>
           )}
 
-          {/* {!telefone && telefone.length > 0 && (
-            <p className='flex w-full text-sm text-red-600 justify-center'>Nome inválido</p>
-          )} */}
+          {!telefoneValido && telefone.length > 0 && (
+            <p className='flex w-full text-sm text-red-600 justify-center'>Telefone inválido</p>
+          )}
 
           <div className='w-full flex justify-center items-center mt-6'>
             <button 
