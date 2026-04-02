@@ -1,3 +1,4 @@
+import { CarrinhoItem } from '@/interface/CarrinhoItem';
 import { CarrinhoListaState } from '@/interface/CarrinhoListaState';
 import {create} from 'zustand';
 import { persist } from 'zustand/middleware';
@@ -40,7 +41,7 @@ export const useCartStore = create<CarrinhoListaState>()(
                 })
             ),
 
-            limparCarrinho: () => set({itens: []}),
+            limparCarrinho: () => set({itens: []})
         }),
         {
             name: 'click-doce-storage',

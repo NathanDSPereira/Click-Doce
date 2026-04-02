@@ -99,22 +99,23 @@ export default function ModalAgendamento({produtoAAgendar, fecharModal} : {produ
     }
     
     return (
-        <section className="fixed w-screen h-screen inset-0 flex flex-col items-center justify border border-(--text-chocolate) rounded-2xl bg-(--bg-creme)/70 backdrop-blur-sm z-100 overflow-x-hidden">
-                <div className="w-full flex justify-end items-center p-4 h-20 mb-4">    
-                    <button onClick={fecharModal} className="text-xl bg-(--text-chocolate)/90 rounded-full w-15 h-15 flex justify-center items-center font-bold uppercase">
-                        <X size={40} className="text-(--bg-creme)" />
-                    </button>
-                </div>
-
-                <div className="flex flex-col gap-10 pb-10 shadow-md bg-(--bg-creme)">
+        <section className="fixed w-screen h-screen inset-0 flex flex-col items-center bg-(--bg-creme)/70 backdrop-blur-sm z-100 overflow-x-hidden">
+                <div className="flex flex-col gap-10 pb-10 shadow-md bg-(--bg-creme) w-11/12 md:w-1/2 animate-in fade-in duration-300">
                     <div className="flex flex-col items-center gap-3 h-auto">
-                        <Image
-                            src={produto.imagem_url}
-                            alt={produto.nome}
-                            className=" w-full object-cover rounded-t-2xl rounded-b-xl"
-                            width={150}
-                            height={150}
-                        />
+                        <div className="w-full rounded-2xl relative">
+                            <Image
+                                src={produto.imagem_url}
+                                alt={produto.nome}
+                                className=" w-full object-cover rounded-t-2xl rounded-b-xl"
+                                width={150}
+                                height={150}
+                            />
+                            <div className="w-full flex justify-end items-center absolute top-1 right-1">    
+                                <button onClick={fecharModal} className="text-xl bg-(--bg-creme) rounded-full w-14 h-14 flex justify-center items-center font-bold uppercase">
+                                    <X size={40} className="text-(--text-chocolate)" />
+                                </button>
+                            </div>
+                        </div>
 
                         <div className="flex justify-center items-center px-5 py-5 pb-5 text-center border-b border-(--text-chocolate)">
                             <h4 className="font-sans text-(--text-chocolate) font-bold text-2xl">{produto.nome}</h4>

@@ -7,16 +7,16 @@ import { CarrinhoItem } from "@/interface/CarrinhoItem";
 import { formatarData } from "@/Utils/FormatarData";
 import { useUserState } from "@/store/useUserState";
 
-export default function CarrinhoList({fecharCarrinho, abrirCarrinho, abrirModalUsuario, fecharModalUsuario}: {fecharCarrinho: () => void, abrirCarrinho: boolean, abrirModalUsuario: () => void, fecharModalUsuario: () => void}) {
+export default function CarrinhoList({fecharCarrinho, abrirCarrinho, abrirModalUsuario, abrirModalPagamento}: {fecharCarrinho: () => void, abrirCarrinho: boolean, abrirModalUsuario: () => void, abrirModalPagamento: () => void}) {
 
     useEffect(() => {
-            if (abrirCarrinho) {
-            document.body.style.overflow = 'hidden';
-            } else {
-                document.body.style.overflow = 'unset';
-            }
+        if (abrirCarrinho) {
+        document.body.style.overflow = 'hidden';
+        } else {
+            document.body.style.overflow = 'unset';
+        }
 
-            return () => { document.body.style.overflow = 'unset'; };
+        return () => { document.body.style.overflow = 'unset'; };
     }, [abrirCarrinho]);
 
     const {itens, atualizarQuantidade, removerItem} = useCartStore();
@@ -41,7 +41,7 @@ export default function CarrinhoList({fecharCarrinho, abrirCarrinho, abrirModalU
         if(!nome || nome.trim() === '') {
             abrirModalUsuario();
         } else {
-            return
+            abrirModalPagamento();
         }
     }
 

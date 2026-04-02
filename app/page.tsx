@@ -14,6 +14,7 @@ import { Produtos } from '@/interface/Produtos';
 import BdDoces from '@/bancoDeDados/BdDoces.json';
 
 import { useState } from 'react';
+import ModalEscolherMetodoPagamento from '@/components/ModalEscolherMetodoPagamento';
 
 
 export default function Home() {
@@ -43,6 +44,7 @@ export default function Home() {
   const [produtoPedirAgora, setProdutoPedirAgora] = useState<Produtos | null>(null);
   const [abrirCarrinho, seAbrirCarrinho] = useState<boolean>(false);
   const [abrirModalConfirmarDadosUsuario, setAbrirModalConfirmarDadosUsuario] = useState<boolean>(false)
+  const [abrirModalEscolherPagamento, setAbrirModalEscolherPagamento] = useState<boolean>(false)
 
   const abrirModalPedirProduto = (produto: Produtos) => {
     setProdutoPedirAgora(produto);
@@ -74,6 +76,14 @@ export default function Home() {
 
   const fecharModalUsuario = () => {
     setAbrirModalConfirmarDadosUsuario(false);
+  }
+
+  const abrirModalPagamento = () => {
+    setAbrirModalEscolherPagamento(true);
+  }
+
+  const fecharModalPagamento = () => {
+    setAbrirModalEscolherPagamento(false);
   }
 
   return (
@@ -114,7 +124,7 @@ export default function Home() {
           abrirCarrinho={abrirCarrinho}
           fecharCarrinho={fecharModalCarrinho}
           abrirModalUsuario={abrirModalUsuario}
-          fecharModalUsuario={fecharModalUsuario}
+          abrirModalPagamento={abrirModalPagamento}
         />
       )}
 
@@ -122,6 +132,13 @@ export default function Home() {
         <ModalConfirmarDadosUsuario
             aberto={abrirModalConfirmarDadosUsuario}
             fecharModal={fecharModalUsuario}
+            abrirModalPagamento={abrirModalPagamento}
+        />
+      )}
+
+      {abrirModalEscolherPagamento && (
+        <ModalEscolherMetodoPagamento
+          fecharModal={fecharModalPagamento}
         />
       )}
       

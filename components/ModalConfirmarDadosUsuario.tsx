@@ -2,15 +2,15 @@ import { useState, useEffect } from 'react';
 import { User, Phone, ArrowRight, X } from 'lucide-react';
 import { useUserState } from '@/store/useUserState';
 
-export function ModalConfirmarDadosUsuario({ aberto, fecharModal }: {aberto: boolean, fecharModal: () => void}) {
+export function ModalConfirmarDadosUsuario({ aberto, fecharModal, abrirModalPagamento }: {aberto: boolean, fecharModal: () => void, abrirModalPagamento: () => void}) {
 
-   useEffect(() => {
-          if (aberto) {
-              document.body.style.overflow = 'hidden'; // Trava o fundo
-          } else {
-              document.body.style.overflow = 'unset';
-          }
-          return () => { document.body.style.overflow = 'unset'; };
+  useEffect(() => {
+      if (aberto) {
+        document.body.style.overflow = 'hidden'; // Trava o fundo
+      } else {
+        document.body.style.overflow = 'unset';
+      }
+      return () => { document.body.style.overflow = 'unset'; };
   }, [aberto]);
 
   const atualizarDadosUsuario = useUserState((state) => state.atualizarDados)
@@ -55,7 +55,7 @@ export function ModalConfirmarDadosUsuario({ aberto, fecharModal }: {aberto: boo
 
     if (permiteEnviar) {
       atualizarDadosUsuario({ nome, telefone });
-      fecharModal();
+      abrirModalPagamento();
     } else {
         alert("Por favor, preencha seu nome e telefone para continuarmos! 🍬");
     }
