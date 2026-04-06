@@ -1,8 +1,16 @@
-import Image from "next/image";
+// import Image from "next/image";
+import { useEffect } from "react";
 import { X } from "lucide-react";
 
-export default function ModalEscolherMetodoPagamento({fecharModal}: {fecharModal: () => void}) {
-
+export default function ModalEscolherMetodoPagamento({fecharModal, modalAberto}: {fecharModal: () => void, modalAberto: boolean}) {
+    useEffect(() => {
+        if (modalAberto) {
+            document.body.style.overflow = 'hidden';
+        } else {
+            document.body.style.overflow = 'unset';
+        }
+        return () => { document.body.style.overflow = 'unset'; };
+    }, [modalAberto]);
 
     return(
         <section className="fixed inset-0 z-100 h-screen bg-black/60 backdrop-blur-sm flex items-center justify-center p-4 overflow-x-hidden">

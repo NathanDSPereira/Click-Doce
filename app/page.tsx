@@ -43,8 +43,7 @@ export default function Home() {
   const [abrirMenu, setAbrirMenu] = useState<boolean>(false);
   const [produtoPedirAgora, setProdutoPedirAgora] = useState<Produtos | null>(null);
   const [abrirCarrinho, seAbrirCarrinho] = useState<boolean>(false);
-  const [abrirModalConfirmarDadosUsuario, setAbrirModalConfirmarDadosUsuario] = useState<boolean>(false)
-  const [abrirModalEscolherPagamento, setAbrirModalEscolherPagamento] = useState<boolean>(false)
+  const [abrirEtapaCheckout, setAbrirEtapaCheckout] = useState<string>('fechado');
 
   const abrirModalPedirProduto = (produto: Produtos) => {
     setProdutoPedirAgora(produto);
@@ -71,19 +70,19 @@ export default function Home() {
   }
 
   const abrirModalUsuario = () => {
-    setAbrirModalConfirmarDadosUsuario(true);
+    setAbrirEtapaCheckout('confirmarDadosUsuario');
   }
 
   const fecharModalUsuario = () => {
-    setAbrirModalConfirmarDadosUsuario(false);
+    setAbrirEtapaCheckout('fechado');
   }
 
   const abrirModalPagamento = () => {
-    setAbrirModalEscolherPagamento(true);
+    setAbrirEtapaCheckout('escolherMetodoPagamento');
   }
 
   const fecharModalPagamento = () => {
-    setAbrirModalEscolherPagamento(false);
+    setAbrirEtapaCheckout('fechado');
   }
 
   return (
@@ -128,16 +127,17 @@ export default function Home() {
         />
       )}
 
-      {abrirModalConfirmarDadosUsuario && (
+      {abrirEtapaCheckout === 'confirmarDadosUsuario' && (
         <ModalConfirmarDadosUsuario
-            aberto={abrirModalConfirmarDadosUsuario}
+            aberto={abrirEtapaCheckout === 'confirmarDadosUsuario'}
             fecharModal={fecharModalUsuario}
             abrirModalPagamento={abrirModalPagamento}
         />
       )}
 
-      {abrirModalEscolherPagamento && (
+      {abrirEtapaCheckout === 'escolherMetodoPagamento' && (
         <ModalEscolherMetodoPagamento
+          modalAberto={abrirEtapaCheckout === 'escolherMetodoPagamento'}
           fecharModal={fecharModalPagamento}
         />
       )}

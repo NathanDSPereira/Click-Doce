@@ -20,7 +20,7 @@ export default function CarrinhoList({fecharCarrinho, abrirCarrinho, abrirModalU
     }, [abrirCarrinho]);
 
     const {itens, atualizarQuantidade, removerItem} = useCartStore();
-    const {nome, telefone, atualizarDados} = useUserState();
+    const {nome} = useUserState();
 
     const valorTotal = itens.reduce((acumulador, item) => acumulador + (item.quantidade * item.preco), 0);
     const totalItens = itens.reduce((acumulador, item) => acumulador + item.quantidade, 0)

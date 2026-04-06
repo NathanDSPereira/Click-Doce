@@ -64,10 +64,12 @@ export default function MenuLateral({fecharMenu, menuAberto, abrirCarrinho} : {f
                         <span className="font-semibold text-[18px]">Meus Pedidos</span>
                     </button>
 
-                    <button className="flex items-center w-full gap-3 px-6 py-4 text-(--text-chocolate) active:border-(--accent-green) rounded-2xl transition-all group">
-                        <MessageCircle size={22} />
-                        <span className="font-semibold text-[18px]">WhatsApp</span>
-                    </button>
+                     <a href="https://wa.me/5534997298335?text=Olá!%20Gostaria%20de%20fazer%20um%20pedido." target="_blank" rel="noopener noreferrer" className="flex justify-center items-center text-(--text-chocolate)">
+                        <button className="flex items-center w-full gap-3 px-6 py-4 text-(--text-chocolate) active:border-(--accent-green) rounded-2xl transition-all group">
+                            <MessageCircle size={22} />
+                            <span className="font-semibold text-[18px]">WhatsApp</span>
+                        </button> 
+                     </a>
                 </nav>
             </aside>
         </section>
