@@ -5,6 +5,7 @@ import { X, Plus, Minus } from "lucide-react";
 import Image from "next/image";
 import { useEffect, useState } from "react";
 import { formatarMoeda } from "@/Utils/FormatarMoeda";
+import { useToast } from "@/store/useToast";
 
 export default function ModalAgendamento({produtoAAgendar, fecharModal} : {produtoAAgendar: Produtos | null, fecharModal: () => void}) {
     useEffect(() => {
@@ -24,6 +25,8 @@ export default function ModalAgendamento({produtoAAgendar, fecharModal} : {produ
     const [permiteEnviar, setPermiteEnviar] = useState<boolean>(false)
 
     const adicionarNovoItem = useCartStore((state) => state.adicionarNovoItem)
+
+    const { adicionarToast } = useToast();
 
     if(!produtoAAgendar) return null
 
@@ -95,6 +98,7 @@ export default function ModalAgendamento({produtoAAgendar, fecharModal} : {produ
         }
 
         adicionarNovoItem(novoPedido)
+        // adicionarToast({message: 'Produto adicionado ao carrinho!', type: 'sucesso'});
         console.log("Carrinho atual:", useCartStore.getState().itens);
         fecharModal();
     }
