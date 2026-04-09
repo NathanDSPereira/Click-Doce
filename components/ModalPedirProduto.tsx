@@ -1,3 +1,5 @@
+'use client'
+
 import { CarrinhoItem } from "@/interface/CarrinhoItem";
 import { Produtos } from "@/interface/Produtos";
 import { useCartStore } from "@/store/useCartStore";
@@ -98,7 +100,7 @@ export default function ModalAgendamento({produtoAAgendar, fecharModal} : {produ
         }
 
         adicionarNovoItem(novoPedido)
-        // adicionarToast({message: 'Produto adicionado ao carrinho!', type: 'sucesso'});
+        adicionarToast({ type: 'sucesso', message: 'Produto adicionado à sacola!', visible: true, duration: 3000 })
         console.log("Carrinho atual:", useCartStore.getState().itens);
         fecharModal();
     }
